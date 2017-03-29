@@ -1,0 +1,538 @@
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#box_shape").hide();
+        $("#txt_teeth").hide();
+        $("#txt_skin").hide();
+        $("#skin").change(function () {
+            var ddl = $("#skin").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_skin").show();
+                $("#skin").val("");
+            }
+            else {
+                $("#txt_skin").hide();
+            }
+        });
+        $("#txt_hairstyles").hide();
+        $("#hairstyles").change(function () {
+            var ddl = $("#hairstyles").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_hairstyles").show();
+                $("#hairstyles").val("");
+            }
+            else {
+                $("#txt_hairstyles").hide();
+            }
+        });
+        $("#txt_head").hide();
+        $("#head").change(function () {
+            var ddl = $("#head").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_head").show();
+                $("#head").val("");
+            }
+            else {
+                $("#txt_head").hide();
+            }
+        });
+        $("#txt_face").hide();
+        $("#face").change(function () {
+            var ddl = $("#face").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_face").show();
+                $("#face").val("");
+            }
+            else {
+                $("#txt_face").hide();
+            }
+        });
+        $("#txt_eye").hide();
+        $("#eye").change(function () {
+            var ddl = $("#eye").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_eye").show();
+                $("#eye").val("");
+            }
+            else {
+                $("#txt_eye").hide();
+            }
+        });
+        $("#txt_ear").hide();
+        $("#ear").change(function () {
+            var ddl = $("#ear").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_ear").show();
+                $("#ear").val("");
+            }
+            else {
+                $("#txt_ear").hide();
+            }
+        });
+        $("#txt_nose").hide();
+        $("#nose").change(function () {
+            var ddl = $("#nose").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_nose").show();
+                $("#nose").val("");
+            }
+            else {
+                $("#txt_nose").hide();
+            }
+        });
+        $("#txt_mouth").hide();
+        $("#mouth").change(function () {
+            var ddl = $("#mouth").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_mouth").show();
+                $("#mouth").val("");
+            }
+            else {
+                $("#txt_mouth").hide();
+            }
+        });
+        $("#txt_chin").hide();
+        $("#chin").change(function () {
+            var ddl = $("#chin").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_chin").show();
+                $("#chin").val("");
+            }
+            else {
+                $("#txt_chin").hide();
+            }
+        });
+        $("#txt_mirror").hide();
+        $("#mirror").change(function () {
+            var ddl = $("#mirror").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_mirror").show();
+                $("#mirror").val("");
+            }
+            else {
+                $("#txt_mirror").hide();
+            }
+        });
+        $("#txt_scar").hide();
+        $("#scar").change(function () {
+            var ddl = $("#scar").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_scar").show();
+                $("#scar").val("");
+            }
+            else {
+                $("#txt_scar").hide();
+            }
+        });
+        $("#txt_accent").hide();
+        $("#accent").change(function () {
+            var ddl = $("#accent").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_accent").show();
+                $("#accent").val("");
+            }
+            else {
+                $("#txt_accent").hide();
+            }
+        });
+        $("#txt_eyebrow").hide();
+        $("#eyebrow").change(function () {
+            var ddl = $("#eyebrow").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_eyebrow").show();
+                $("#eyebrow").val("");
+            }
+            else {
+                $("#txt_eyebrow").hide();
+            }
+        });
+        $("#txt_nature").hide();
+        $("#nature").change(function () {
+            var ddl = $("#nature").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_nature").show();
+                $("#nature").val("");
+            }
+            else {
+                $("#txt_nature").hide();
+            }
+        });
+
+        $("#shape").change(function () {
+            var ddl = $("#shape").val();
+            if (ddl == 'อื่นๆ') {
+                $("#box_shape").show();
+                $("#shape").val("");
+
+            }
+            else {
+                $("#box_shape").hide();
+            }
+        });
+
+        $("#teeth").change(function () {
+            var ddl = $("#teeth").val();
+            if (ddl == 'อื่นๆ') {
+                $("#txt_teeth").show();
+                $("#teeth").val("");
+            }
+            else {
+                $("#txt_teeth").hide();
+            }
+        });
+
+
+
+
+
+    });
+</script>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+
+            <div class="box-content">
+                <h4 class="page-header">ตำหนิรูปพรรณ</h4>
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label" style="">รูปร่าง</label>
+
+                        <div class="col-sm-3">
+
+                            <select name="shape" id="shape" ng-model="person.shape" class="form-control">
+                                <option value=""></option>
+                                <option value="สันทัด">สันทัด</option>
+                                <option value="อ้วน">อ้วน</option>
+                                <option value="เตี้ย">เตี้ย</option>
+                                <option value="ผอม">ผอม</option>
+                                <option value="สูง">สูง</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+
+                            <div id="box_shape" >
+                                <input  name="txt_shape" id="txt_shape" type="text" ng-model="person.shape" class="form-control">
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label">ฟัน</label>
+
+                        <div class="col-sm-3">
+                            <select name="teeth" id="teeth" ng-model="person.teeth" class="form-control">
+                                <option value=""></option>
+                                <option value="ปกติ">ปกติ</option>
+                                <option value="เหยิน">เหยิน</option>
+                                <option value="หลอ">หลอ</option>
+                                <option value="ขาว">ขาว</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                            <div id="box_teeth" >
+                                <input  name="txt_teeth" id="txt_teeth" type="text" ng-model="person.teeth" class="form-control">
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label" >คิ้ว</label>
+
+                        <div class="col-sm-3">
+                            <select name="eyebrow" id="eyebrow" ng-model="person.eyebrow" class="form-control">
+                                <option value=""></option>
+                                <option value="หนา">หนา</option>
+                                <option value="บาง">บาง</option>
+                                <option value="คิ้วต่อ">คิ้วต่อ</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_eyebrow" >
+                                <input  name="txt_eyebrow" id="txt_eyebrow" type="text" ng-model="person.eyebrow" class="form-control" >
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label">ผิว</label>
+
+                        <div class="col-sm-3">
+                            <select name="skin" id="skin" ng-model="person.skin" class="form-control">
+                                <option value=""></option>
+                                <option value="ดำ">ดำ</option>
+                                <option value="ขาว">ขาว</option>
+                                <option value="ดำแดง">ดำแดง</option>
+                                <option value="ขาวเหลือง">ขาวเหลือง</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_skin" >
+                                <input  name="txt_skin" id="txt_skin" type="text" ng-model="person.skin" class="form-control">
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label" >ทรงผม</label>
+
+                        <div class="col-sm-3">
+                            <select name="hairstyles" id="hairstyles" ng-model="person.hairstyles" class="form-control">
+                                <option value=""></option>
+                                <option value="รองทรง">รองทรง</option>
+                                <option value="สั้นเกรียน">สั้นเกรียน</option>
+                                <option value="แสกซ้าย">แสกซ้าย</option>
+                                <option value="หยิกหยักโศก">หยิกหยักโศก</option>
+                                <option value="ยาวประป่า">ยาวประป่า</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+
+                            </select>
+                            <div id="box_hairstyles" >
+                                <input  name="txt_hairstyles" id="txt_hairstyles" type="text" ng-model="person.hairstyles" class="form-control">
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label">ศีรษะ</label>
+
+                        <div class="col-sm-3">
+                            <select name="head" id="head" ng-model="person.head" class="form-control">
+                                <option value=""></option>
+                                <option value="สามเหลี่ยม">สามเหลี่ยม</option>
+                                <option value="สี่เหลี่ยม">สี่เหลี่ยม</option>
+                                <option value="กลม">กลม</option>
+                                <option value="รูปไข่">รูปไข</option>
+                                <option value="หัวล้าน">หัวล้าน</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_head" >
+                                <input  name="txt_head" id="txt_head" type="text" ng-model="person.head" class="form-control" >
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label" >ใบหน้า</label>
+
+                        <div class="col-sm-3">
+                            <select name="face" id="face" ng-model="person.face" class="form-control">
+                                <option value=""></option>
+                                <option value="รูปไข่">รูปไข่</option>
+                                <option value="สี่เหลี่ยม">สี่เหลี่ยม</option>
+                                <option value="สามเหลี่ยม">สามเหลี่ยม</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_face" >
+                                <input  name="txt_face" id="txt_face" type="text" ng-model="person.face" class="form-control" >
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label" >ตา</label>
+
+                        <div class="col-sm-3">
+                            <select name="eye" id="eye" ng-model="person.eye" class="form-control">
+                                <option value=""></option>
+                                <option value="เล็ก">เล็ก</option>
+                                <option value="ตี่">ตี่</option>
+                                <option value="ตาสองชั้น">ตาสองชั้น</option>
+                                <option value="ชั้นเดียว">ชั้นเดียว</option>
+                                <option value="ตาเหล่">ตาเหล่</option>
+                                <option value="ตาบอด">ตาบอด</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_eye" >
+                                <input  name="txt_eye" id="txt_eye" type="text" ng-model="person.eye" class="form-control" >
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label" >หู</label>
+
+                        <div class="col-sm-3">
+                            <select name="ear" id="ear" ng-model="person.ear" class="form-control">
+                                <option value=""></option>
+                                <option value="กวง">กาง</option>
+                                <option value="บาน">บาน</option>
+                                <option value="แหว่ง">แหว่ง</option>
+                                <option value="ปกติ">ปกติ</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_ear" >
+                                <input  name="txt_ear" id="txt_ear" type="text" ng-model="person.ear" class="form-control" >
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label" >จมูก</label>
+
+                        <div class="col-sm-3">
+                            <select name="nose" id="nose" ng-model="person.nose" class="form-control">
+                                <option value=""></option>
+                                <option value="โด่ง">โด่ง</option>
+                                <option value="แบน">แบน</option>
+                                <option value="โหว่">โหว่</option>
+                                <option value="ธรรมดา">ธรรมดา</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_nose" >
+                                <input  name="txt_shape" id="txt_nose" type="text" ng-model="person.nose" class="form-control" >
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label" >ปาก</label>
+
+                        <div class="col-sm-3">
+                            <select name="mouth" id="mouth" ng-model="person.mouth" class="form-control">
+                                <option value=""></option>
+                                <option value="หนา">หนา</option>
+                                <option value="บาง">บาง</option>
+                                <option value="แหว่ง">แหว่ง</option>
+                                <option value="กว้าง">กว้าง</option>
+                                <option value="กระจับ">กระจับ</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_mouth" >
+                                <input  name="txt_mouth" id="txt_mouth" type="text" ng-model="person.mouth" class="form-control">
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label" >คาง</label>
+
+                        <div class="col-sm-3">
+                            <select name="chin" id="chin" ng-model="person.chin" class="form-control">
+                                <option value=""></option>
+                                <option value="สี่เหลี่ยม">สี่เหลี่ยม</option>
+                                <option value="สามเหลี่ยม">สามเหลี่ยม</option>
+                                <option value="มน">มน</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_chin" >
+                                <input  name="txt_chin" id="txt_chin" type="text" ng-model="person.chin" class="form-control" >
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label" style="font-size: 11px;">หนวด/เครา</label>
+
+                        <div class="col-sm-3">
+                            <select name="mirror" id="mirror" ng-model="person.mirror" class="form-control">
+                                <option value=""></option>
+                                <option value="หนวดยาว">หนวดยาว</option>
+                                <option value="หนาวสั้น">หนาวสั้น</option>
+                                <option value="มีเครา">มีเครา</option>
+                                <option value="ไม่มีเครา">ไม่มีเครา</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                            <div id="box_mirror" >
+                                <input  name="txt_mirror" id="txt_mirror" type="text" ng-model="person.mirror" class="form-control">
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label">ตำหนิ:</label>
+
+                        <div class="col-sm-3">
+                            <select name="scar" id="scar" ng-model="person.scar" class="form-control">
+                                <option value=""></option>
+                                <option value="ไฝ">ไฝ</option>
+                                <option value="ปาน">ปาน</option>
+                                <option value="รอยเเผลเป็น">รอยเเผลเป็น</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_scar" >
+                                <input  name="txt_shape" id="txt_scar" type="text" ng-model="person.scar" class="form-control">
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label">สำเนียง:</label>
+
+                        <div class="col-sm-3">
+                            <select name="accent" id="accent" ng-model="person.accent" class="form-control">
+                                <option value=""></option>
+                                <option value="ภาคกลาง">ภาคกลาง</option>
+                                <option value="ภาคอีสาน">ภาคอีสาน</option>
+                                <option value="ภาคเหนือ">ภาคเหนือ</option>
+                                <option value="ภาคใต้">ภาคใต้</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+
+                            </select>
+                            <div id="box_accent" >
+                                <input  name="txt_accent" id="txt_accent" type="text" ng-model="person.accent" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label" style="font-size: 11px;">ลักษณะเด่น</label>
+
+                        <div class="col-sm-3">
+                            <select name="nature" id="nature" ng-model="person.nature" class="form-control">
+                                <option value=""></option>
+                                <option value="ตาเหล่">ตาเหล่</option>
+                                <option value="ตาบอด">ตาบอด</option>
+                                <option value="นิ้วหัวเเม่มืดซ้ายด้วน">นิ้วหัวเเม่มืดซ้ายด้วน</option>
+                                <option value="ขาเป้">ขาเป้</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                            <div id="box_nature" >
+                                <input  name="txt_shape" id="txt_nature" type="text" ng-model="person.nature" class="form-control" >
+                            </div>
+
+                        </div>
+                        <label class="col-sm-1 control-label">อุปนิสัย:</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="person.personality" type="text" class="form-control"
+                                   name="concept">
+                        </div>
+                        <label class="col-sm-1 control-label" style="font-size: 11px;">สถานที่เที่ยวเตร่</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="person.location_gallivent" type="text" class="form-control"
+                                   name="concept">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ส่วนสูง (เซนติเมตร)</label>
+
+                        <div class="col-sm-3">
+                            <input type="text" ng-model="person.height" class="form-control">
+
+                        </div>
+                        <label class="col-sm-2 control-label">น้ำหนัก (กิโลกรัม)</label>
+
+                        <div class="col-sm-3">
+                            <input type="text" ng-model="person.weight" class="form-control">
+
+                        </div>
+
+                    </div>
+
+                </form>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pull-right">
+                            <button type="button" ng-click="showTab('tab3')" class="btn btn-primary">ก่อนหน้า</button>
+                            <button type="button" ng-click="showTab('tab5')" class="btn btn-primary">ถัดไป</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

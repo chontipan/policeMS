@@ -1,0 +1,163 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref ="home">ข้อมูลคดี</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+
+
+    <div class="row page-header">
+        <div class="col-sm-8">
+            <h3 class="">จัดการข้อมูลคดี</h3>
+        </div>
+        <div class="col-sm-4 text-right padding-top-20">
+            <a class="btn btn-success" ui-sref="add" title="Add new User"><i class="fa fa-plus-circle" ></i> เพิ่มคดี</a>
+        </div>
+    </div>
+
+    <div class="panel panel-default"  id="scroll_case">
+
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input placeholder="เลขคดี" ng-model="search.number_case" type="text" class="form-control" ng-model="keyword.typepeople" />
+                        </th>
+                        <th class="text-center">
+                            <input placeholder="ปี" ng-model="search.year_number_case" type="text" class="form-control" ng-model="keyword.typepeople" />
+                        </th>
+                        <th class="text-center">
+                            <input placeholder="สถานีตำรวจ" ng-model="search.station_number_case" type="text" class="form-control" ng-model="keyword.typepeople" />
+                        </th>
+                        <th class="text-center">
+                            <input placeholder="ชื่อคดี" ng-model="search.name_case" type="text" class="form-control" ng-model="keyword.idcard" />
+                        </th>
+                        <th class="text-center">
+                            </th>
+                        <th class="text-center">
+                            <input placeholder="วันที่เกิดเหตุ" ng-model="search.date_case"  id="id_datetime_picker1"  type="text" class="form-control" ng-model="keyword.name" />
+                        </th>
+                        <th class="text-center">
+
+                        </th>
+                        <th class="text-center">
+                        </th>
+
+                    </tr>
+                    <tr>
+
+                        <th  class="text-center"  style="width: 6%">เลขคดี</th>
+                        <th  class="text-center"  style="width: 6%">ปี</th>
+                        <th  class="text-center"  style="width: 8%">สถานีตำรวจ</th>
+                        <th  class="text-center" style="width: 15%">คดี/ข้อหา</th>
+                        <th  class="text-center" style="width: 15%">บุคคล</th>
+                        <th  class="text-center" style="width: 15%">วันที่เกิดเหตุ</th>
+                        <th  class="text-center" style="width: 15%">สถานะ</th>
+                        <th  class="text-center" style="width: 10%">#</th>
+                    </tr>
+
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr ng-repeat="datacases in datacase | filter:search as results" >
+
+
+                        <td ng-bind="datacases.number_case"></td>
+                        <td ng-bind="datacases.year_number_case"></td>
+
+                        <td ng-bind="datacases.station_number_case"></td>
+                        <td ng-bind="datacases.name_case"></td>
+
+
+                        <td >
+                            <table>
+                                <tbody>
+                                <tr ng-repeat="person in datacases.criminalhistory" bgcolor="">
+                                    <td ><a target="_blank" href="person_crime#/preview_person/<% person.id %>" ng-bind="' <% $index+1 %>. '+person.nametitle+' ' +person.name + ' ' +person.surname" ></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td ng-bind="datacases.date_case"></td>
+
+
+                        <td class="text-center">
+                            <i ng-if="datacases.status == 'complete' && datacases.number_case && datacases.file_case" class="fa fa-check-circle fa-1x " style="color: #008000"
+                               popover="ยืนยันการบันทึกข้อมูลคดีนี้ เรียบร้อยแล้ว!" popover-trigger="mouseenter"></i>
+                            <i ng-if="datacases.status != 'complete'" class="fa fa-minus-circle fa-1x" style="color: red"
+                               popover="กรอกข้อมูลคดียังไม่เสร็จ กรุณาตรวจสอบข้อมูลให้เสร็จ หรือ ลบคดีนี้" popover-trigger="mouseenter"></i>
+                            <i ng-if="!datacases.number_case" class="fa fa-warning fa-1x" style="color: red"
+                               popover="คดีนี้ยังไม่ได้กรอกเลขคดี" popover-trigger="mouseenter"></i>
+                            <i ng-if="!datacases.file_case" class="fa fa-file-pdf-o fa-1x" style="color: #ff8000"
+                               popover="คดีนี้ยังไม่มีไฟล์คดี" popover-trigger="mouseenter"></i>
+
+
+                        </td>
+
+                        <td class="text-center">
+                            <a  ui-sref="edit_case({id:datacases.id})" type="submit" type="button" ng-if="datacases.status != 'complete'">
+                                <i class="fa fa-pencil-square-o fa-1x" popover="ตรวจสอบข้อมูลคดี" popover-trigger="mouseenter"></i></a>
+
+                            <a  ui-sref="view({id:datacases.id})" type="submit" type="button">
+                                <i class="fa fa-street-view fa-1x" popover="ดูข้อมูลคดี" popover-trigger="mouseenter"></i></a>
+
+                            <a ng-click="print_case(datacases)" class="edit"><i class="fa fa-print"
+                                                                               popover="พิมพ์ข้อมูลคดี" popover-trigger="mouseenter"></i></a>
+                            <a  ng-if="!datacases.number_case"  ui-sref="input_number_case({id:datacases.id})" type="submit" type="button">
+                                <i class="fa fa-book fa-1x" popover="เพิ่มเลขคดี" popover-trigger="mouseenter"></i></a>
+
+                            <a  ng-if="!datacases.file_case"  ui-sref="upload_file({id:datacases.id})" type="submit" type="button">
+                                <i class="fa fa-cloud-upload fa-1x" popover="อัพโหลดไฟล์คดี" popover-trigger="mouseenter"></i></a>
+
+                            <a ng-if="current_role == 'admin' || current_role == 'Member_Commissioned_Officers'" ui-sref="edit({id:datacases.id})" type="submit" type="button">
+                                <i class="fa fa-wrench fa-1x" popover="แก้ไขคดี" popover-trigger="mouseenter"></i></a>
+
+
+                            <a ng-if="current_role == 'Member_Commissioned_Officers'" ng-click="delete_case(datacases)" type="submit" type="button">
+                                <i class="fa fa-remove fa-1x" popover="ลบคดี" popover-trigger="mouseenter"></i></a>
+
+                        </td>
+
+                    </tr>
+                    <tr class="animate-repeat" ng-if="results.length == 0">
+                        <td class="text-center" colspan="8"> ไม่พบข้อมูล!!! </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+
+
+        $("#id_datetime_picker1").datetimepicker({
+            timepicker:false,
+            format:'วันที่ d เดือน F พ.ศ. Y ',
+            lang:'th',  // แสดงภาษาไทย
+            yearOffset:543,  // ใช้ปี พ.ศ. บวก 543 เพิ่มเข้าไปในปี ค.ศ
+            closeOnDateSelect:true
+        });
+
+
+
+
+    });
+</script>
+
+

@@ -1,0 +1,128 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการประวัติบุคคลทั่วไป</a></li>
+            <li><a href="#">อัพโหลดรูปภาพบุคคล</a></li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="row page-header">
+            <div class="col-sm-8">
+                <h1 class="">อัพโหลดรูปภาพ</h1>
+            </div>
+            <div class="col-sm-4 text-right padding-top-20">
+                <button type="button"  ui-sref="home" class="btn btn-success"><i class="fa fa-home"></i> กลับ</button></div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i>
+                    <span>อัพโหลดรูปภาพ</span>
+                </div>
+                <div class="box-icons">
+                    <a ui-sref="home">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="expand-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+
+                </div>
+                <div class="no-move"></div>
+
+            </div>
+            <div class="box-content">
+                <h4 class="page-header">อัพโหลดรูปภาพ</h4>
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <div class="field" flow-init flow-object="myFlow"
+                             flow-file-success="$file.msg = $message"
+                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+                             flow-file-success="flowSuccess($file,$message)" align="center">
+
+
+                            <div class="container">
+                                <hr class="soften"/>
+
+                                <button  class="btn btn-primary" ng-hide="$flow.files.length"
+                                         flow-btn flow-attrs="{accept:'image/*'}">เลือกรูปภาพ</button>
+                                <div ng-repeat="file in myFlow.files">
+
+                                    <button  ng-if="!file.isComplete()" class="btn btn-warning" ng-show="$flow.files.length"
+                                             flow-btn flow-attrs="{accept:'image/*'}">เปลี่ยนรูปภาพ</button>
+                                    <button  ng-if="!file.isComplete()" class="btn btn-success" ng-show="$flow.files.length"
+                                             ng-click="uploadFile()">ยืนยัน</button>
+                                    <button  class="btn btn-danger"  ng-if="!file.isComplete()" ng-click="cancelFile(file)">
+                                        ลบรูปภาพ
+                                    </button>
+
+                                </div>
+
+
+                                <br>
+                                <p>
+                                    Only PNG,GIF,JPG files allowed.
+                                </p>
+
+                                <div>
+                                    <div ng-if="$flow.files.length==0 &&  !guest.photo" class="">
+                                        <img src="/img/square-image.png" width="400" height="300"/>
+                                    </div>
+
+                                    <div ng-if="$flow.files.length==0 && guest.photo" class="">
+                                        <img ng-src="<% guest.photo %>" width="256" height="256"/>
+                                        <div id="simple_gallery" class="box-content">
+                                            <a class="fancybox" ng-href="<% guest.photo %>" title="Westfield Waterfalls - Middletown CT Lower (Graham_CS)">
+                                                <img ng-src="<% guest.photo %>" alt="" width="256" height="256" />
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div ng-repeat="file in myFlow.files">
+
+                                        <div class="">
+                                            <a ng-if="file.isComplete()" href="#" class="">
+                                                <i class=""></i>
+                                            </a>
+                                            <img flow-img="file"width="400" height="300"/>
+                                            <div class="" ng-if="file.isUploading()">
+                                                <div class="" data-percent="<% file.progress() %>"></div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <tr ng-repeat="file in $flow.files">
+                                            <td>ชื่อไฟล์ <% file.name %></td>
+                                        </tr>
+
+
+                                    </div>
+
+                                    <br>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+

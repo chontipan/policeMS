@@ -1,0 +1,73 @@
+<div class="" ng-controller="CaseFileController as pc">
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="box">
+
+                <div class="box-content">
+                    <h4 class="page-header">อัพโหลดไฟล์คดี</h4>
+
+                    <form class="form-horizontal" role="form">
+
+                        <div class="field" flow-init flow-object="pc.myFlow"
+                             flow-file-success="$file.msg = $message"
+                             flow-file-added="!!{doc:1,docx:1,pdf:1}[$file.getExtension()]"
+                             flow-file-success="flowSuccess($file,$message)" align="center">
+
+
+
+                        <div class="container">
+                                <hr class="soften"/>
+
+                                <button  class="btn btn-primary" ng-hide="$flow.files.length"
+                                         flow-btn flow-attrs="{accept:'file/*'}">เลือกไฟล์</button>
+                                <div ng-repeat="file in pc.myFlow.files">
+
+                                    <button  ng-if="!file.isComplete()" class="btn btn-warning" ng-show="$flow.files.length"
+                                             flow-btn flow-attrs="{accept:'file/*'}">เปลี่ยนไฟล์</button>
+                                    <button  ng-if="!file.isComplete()" class="btn btn-success" ng-show="$flow.files.length"
+                                             ng-click="pc.uploadFile()">ยืนยัน</button>
+                                    <button  class="btn btn-danger"  ng-if="!file.isComplete()" ng-click="pc.cancelFile(file)">
+                                        ลบไฟล์
+                                    </button>
+
+                                </div>
+
+                            <br>
+                            <p ng-hide="$flow.files.length">
+                                เลือกเฉพาะไฟล์ PDF,doc,docx เท่านั้น.
+                            </p>
+
+
+                                <div>
+
+
+
+                                    <div ng-repeat="file in pc.myFlow.files">
+
+                                        <tr ng-repeat="file in $flow.files">
+                                            <td>ชื่อไฟล์ <% file.name %></td>
+                                        </tr>
+
+
+                                    </div>
+                                    <div ng-if="$flow.files.length==0 && caseFile.file_case" class="">
+                                        <a href="<% caseFile.file_case %>" class="btn btn-success" _blank>ดูไฟล์คดี</a>
+                                    </div>
+                                    <br>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,203 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการข้อมูลสมาชิก</a></li>
+            <li><a href="#">เพิ่มเจ้าหน้าที่</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-user"></i>
+                    <span>เพิ่มเจ้าหน้าที่</span>
+                </div>
+
+            </div>
+            <div class="box-content">
+                <div class="row page-header">
+                    <div class="col-sm-6">
+                        <h4 class="">เพิ่มเจ้าหน้าที่</h4>
+                    </div>
+                    <div class="col-sm-6 text-right padding-top-20">
+                        <a class="btn btn-primary" ui-sref="home" title="Back"><i class="fa fa-arrow-left" ></i> Back</a>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <form class="form-horizontal" role="form" >
+
+                    <div class="form-group" ng-if="!error.username">
+                        <label class="col-md-4 control-label">ชื่อบัญชีผู้ใช้งาน</label>
+                        <div class="col-md-6">
+                            <input placeholder="Username" type="text" class="form-control" name="username" ng-model="police.username">
+                        </div>
+                    </div>
+
+                    <div class="form-group has-error has-feedback" ng-if="error.username" ng-repeat="error_username in error.username">
+                        <label class="col-md-4 control-label">ชื่อผู้ใช้งาน</label>
+                        <div class="col-md-6">
+                            <input placeholder="Username" type="text" class="form-control" name="username" ng-model="police.username">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_username"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" ng-if="!error.password">
+                        <label class="col-md-4 control-label">รหัสผ่าน</label>
+                        <div class="col-md-6">
+                            <input placeholder="Password" ng-model="police.password" type="password" class="form-control" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.password" ng-repeat="error_password in error.password">
+                        <label class="col-md-4 control-label">รหัสผ่าน</label>
+                        <div class="col-md-6">
+                            <input placeholder="Password" ng-model="police.password" type="password" class="form-control" name="password">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_password"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.vpassword">
+                        <label class="col-md-4 control-label">ยืนยันรหัสผ่าน</label>
+                        <div class="col-md-6">
+                            <input placeholder="ยืนยันรหัสผ่าน" ng-model="police.vpassword" type="password" class="form-control" name="vpassword">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.vpassword" ng-repeat="error_vpassword in error.vpassword">
+                        <label class="col-md-4 control-label">ยืนยันรหัสผ่าน</label>
+                        <div class="col-md-6">
+                            <input placeholder="ยืนยันรหัสผ่าน" type="password" class="form-control" ng-model="police.vpassword">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_vpassword"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" ng-if="!error.position">
+                        <label class="col-sm-4 control-label">ตำแหน่ง</label>
+                        <div class="col-sm-6">
+                            <select ng-model="police.position" class="form-control css-require" ng-options="opt as opt.name_position for opt in positions">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-error has-feedback" ng-if="error.position" ng-repeat="error_position in error.position">
+                        <label class="col-md-4 control-label">ตำแหน่ง</label>
+                        <div class="col-md-6">
+                            <select ng-model="police.position" class="form-control css-require" ng-options="opt as opt.name_position for opt in positions">
+                            </select>
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_position"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.rank">
+                        <label class="col-sm-4 control-label">คำนำหน้าชื่อ</label>
+                        <div class="col-sm-6">
+                            <select ng-model="police.rank" class="form-control css-require" ng-options="opt as opt.rank for opt in ranks">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.rank" ng-repeat="error_rank in error.rank">
+                        <label class="col-md-4 control-label">คำนำหน้าชื่อ</label>
+                        <div class="col-md-6">
+                            <select ng-model="police.rank" class="form-control css-require" ng-options="opt as opt.rank for opt in ranks">
+
+                            </select>
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_rank"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.name_police">
+                        <label class="col-md-4 control-label">ชื่อ</label>
+                        <div class="col-md-6">
+                            <input placeholder="ชื่อ" ng-model="police.name_police" type="text" class="form-control" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.name_police" ng-repeat="error_name_police in error.name_police">
+                        <label class="col-md-4 control-label">ชื่อ</label>
+                        <div class="col-md-6">
+                            <input placeholder="ชื่อ" type="text" class="form-control" ng-model="police.name_police">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_name_police"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" ng-if="!error.surname_police">
+                        <label class="col-md-4 control-label">ชื่อสกุล</label>
+                        <div class="col-md-6">
+                            <input placeholder="นามสกุล" ng-model="police.surname_police" type="text" class="form-control" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.surname_police" ng-repeat="error_surname_police in error.surname_police">
+                        <label class="col-md-4 control-label">ชื่อสกุล</label>
+                        <div class="col-md-6">
+                            <input placeholder="นามสกุล" type="text" class="form-control" ng-model="police.surname_police">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_surname_police"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" ng-if="!error.tel_police">
+                        <label class="col-md-4 control-label">เบอร์โทร</label>
+                        <div class="col-md-6">
+                            <input placeholder="เบอร์โทร" onKeyUp="IsNumeric(this.value,this)"  ng-model="police.tel_police" type="text" class="form-control" name="tel">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.tel_police" ng-repeat="error_tel_police in error.tel_police">
+                        <label class="col-md-4 control-label">เบอร์โทร</label>
+                        <div class="col-md-6">
+                            <input placeholder="กรอกได้เฉพาะตัวเลข" onKeyUp="IsNumeric(this.value,this)"  type="text" class="form-control" ng-model="police.tel_police">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_tel_police"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.role">
+                        <label class="col-sm-4 control-label">สิทธิการเข้าใช้งาน</label>
+                        <div class="col-sm-6">
+                            <select ng-model="police.role" class="form-control css-require" ng-options="opt as opt.name for opt in roles">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-error has-feedback" ng-if="error.role" ng-repeat="error_role in error.role">
+                        <label class="col-md-4 control-label">สิทธิการเข้าใช้งาน</label>
+                        <div class="col-md-6">
+                            <select ng-model="police.role" class="form-control css-require" ng-options="opt as opt.name for opt in roles">
+                            </select>
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_role"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-success" ng-click="savePolice()">
+                                <i class="fa fa-floppy-o"></i> บันทึกข้อมูล
+                            </button>
+                            <button type="submit" class="btn btn-danger"  ui-sref="home">
+                                <i class="fa fa-remove" ></i> ยกเลิก
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

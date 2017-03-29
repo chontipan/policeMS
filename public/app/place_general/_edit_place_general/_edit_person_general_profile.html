@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+
+            <div class="box-content">
+                <h4 class="page-header">ข้อมูลส่วนตัว</h4>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label" style="width: auto">ประเภทบุคคล</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.typepeople" type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <select ng-model="guest.typeidcard" class="form-control" >
+                                <option value="" disabled selected>เลือกประเภทบัตร...</option>
+                                <option value="0">เลขบัตรประจำตัวประชาชน</option>
+                                <option value="1">เลขหนังสือเดินทาง</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <input ng-model="guest.idcard" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label"  style=" width: auto">คำนำหน้า</label>
+
+                        <div class="col-sm-3">
+                            <select ng-model="guest.nametitle" class="form-control css-require" ng-options="opt as opt.name_title for opt in nametitles">
+                            </select>
+                        </div>
+                        <label class="col-sm-1 control-label"  style=" width: auto">ชื่อ</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.name" type="text" class="form-control">
+                        </div>
+                        <label class="col-sm-1 control-label"  style=" width: auto">ชื่อสกุล</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.surname" type="text" class="form-control">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label"  style=" width: auto">ว/ด/ป เกิด</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.birth" type="text" class="form-control" disabled>
+
+                        </div>
+
+                        <label class="col-sm-1 control-label"  style=" width: auto">อาชีพ</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.career" type="text" class="form-control">
+                        </div>
+                        <label class="col-sm-1 control-label"  style=" width: auto">การศึกษา</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.education" type="text" class="form-control">
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-1 control-label" style="width: auto">วันที่บันทึก</label>
+
+                        <div class="col-sm-6">
+                            <label ng-bind="guest.date"  class="control-label" disabled></label>
+                        </div>
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

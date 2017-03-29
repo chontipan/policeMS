@@ -1,0 +1,79 @@
+<div class="" ng-controller="PhotoController as pc">
+
+
+    <div class="form-group">
+        <div class="field" flow-init flow-object="myFlow"
+             flow-file-success="$file.msg = $message"
+             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+             flow-file-success="flowSuccess($file,$message)" align="center">
+
+
+            <div class="container">
+                <hr class="soften"/>
+
+                <button  class="btn btn-primary" ng-hide="$flow.files.length"
+                         flow-btn flow-attrs="{accept:'image/*'}">เลือกรูปภาพ</button>
+                <div ng-repeat="file in myFlow.files">
+
+                    <button  ng-if="!file.isComplete()" class="btn btn-warning" ng-show="$flow.files.length"
+                             flow-btn flow-attrs="{accept:'image/*'}">เปลี่ยนรูปภาพ</button>
+                    <button  ng-if="!file.isComplete()" class="btn btn-success" ng-show="$flow.files.length"
+                             ng-click="pc.uploadFile()">ยืนยัน</button>
+                    <button  class="btn btn-danger"  ng-if="!file.isComplete()" ng-click="pc.cancelFile(file)">
+                        ลบรูปภาพ
+                    </button>
+
+                </div>
+
+
+                <br>
+                <p>
+                    Only PNG,GIF,JPG files allowed.
+                </p>
+
+                <div>
+                    <div ng-if="$flow.files.length==0 &&  !guest.photo" class="">
+                        <img src="/img/square-image.png" width="400" height="300"/>
+                    </div>
+
+                    <div ng-if="$flow.files.length==0 && guest.photo" class="">
+                        <img ng-src="<% guest.photo %>" width="256" height="256"/>
+                        <div id="simple_gallery" class="box-content">
+                            <a class="fancybox" ng-href="<% guest.photo %>" title="<% guest.name %> <% guest.surname %>">
+                                <img ng-src="<% guest.photo %>" alt="" width="256" height="256" />
+                            </a>
+
+                        </div>
+                    </div>
+
+
+
+                    <div ng-repeat="file in myFlow.files">
+
+                        <div class="">
+                            <a ng-if="file.isComplete()" href="#" class="">
+                                <i class=""></i>
+                            </a>
+                            <img flow-img="file"width="400" height="300"/>
+                            <div class="" ng-if="file.isUploading()">
+                                <div class="" data-percent="<% file.progress() %>"></div>
+                            </div>
+                        </div>
+                        <br/>
+                        <tr ng-repeat="file in $flow.files">
+                            <td>ชื่อไฟล์ <% file.name %></td>
+                        </tr>
+
+
+                    </div>
+
+                    <br>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

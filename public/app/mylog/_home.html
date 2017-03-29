@@ -1,0 +1,99 @@
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $('.filterable .btn-filter').click(function(){
+            var $panel = $(this).parents('.filterable'),
+                    $filters = $panel.find('.filters input'),
+                    $tbody = $panel.find('.table tbody');
+            if ($filters.prop('disabled') == true) {
+                $filters.prop('disabled', false);
+                $filters.first().focus();
+            } else {
+                $filters.val('').prop('disabled', true);
+                $tbody.find('.no-result').remove();
+                $tbody.find('tr').show();
+            }
+        });
+
+
+    });
+
+</script>
+
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a href="#">ตรวจสอบการทำงาน</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+
+
+
+<div class="row page-header">
+    <div class="col-sm-8">
+        <h1 class="">ตรวจสอบการทำงาน</h1>
+    </div>
+    <div class="col-sm-4 text-right padding-top-20">
+       </div>
+</div>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+
+                    <th>
+
+                    </th>
+                    <th>
+                        <input ng-model="search.details" type="text" class="form-control">
+                    </th>
+                    <th>
+                        <input ng-model="search.created_at" type="text" class="form-control" placeholder="YYYY-MM-DD">
+                    </th>
+                </tr>
+                <tr>
+
+                    <th class="text-center"  style="width:10%">ลำดับที่</th>
+                    <th class="text-center" style="width:60%">การกระทำ</th>
+                    <th class="text-center" style="width:10%">วัน เวลา</th>
+                </tr>
+
+
+                </thead>
+
+                <tbody>
+
+                <tr ng-repeat="mylog in mylogs | filter:search as results">
+
+                    <td class="text-center" ng-bind="mylog.id" ></td>
+                    <td class="" ng-bind="mylog.details"></td>
+                    <td class="text-center" ng-bind="mylog.created_at"></td>
+
+                </tr>
+                <tr class="animate-repeat" ng-if="results.length == 0">
+                    <td class="text-center" colspan="8"> ไม่พบข้อมูล การกระทำ!!! </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+            <a ng-if="pagination.prev_page_url" ng-click="prev()">Prev</a>
+            <a ng-if="pagination.next_page_url" ng-click="next()">Next</a>
+
+
+        </div>
+    </div>
+</div>

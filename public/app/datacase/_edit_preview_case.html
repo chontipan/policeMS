@@ -1,0 +1,89 @@
+<form class="form-horizontal" role="form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="box">
+                <div class="box-content"  ng-if="caseFile.name_case" >
+                    <h4 class="page-header">ข้อมูลคดี</h4>
+
+                    <form class="form-horizontal" role="form" >
+
+                        <table align="center" border="0" width="100%" style="font-size: 16px">
+                            <ol>
+
+
+                                <tr>
+                                    <td colspan="2"><li>ชื่อคดี : <label ng-bind="caseFile.name_case"></label></td>
+                                    <td colspan="2"><li>เลขคดี : <label ng-bind="caseFile.number_case+' '+caseFile.year_number_case+' '+caseFile.station_number_case"></label></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4"><li>พฤติการณ์คดี : <label ng-bind="caseFile.circumstances_case"></label></td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td colspan="4"><li>สถานที่เกิดเหตุ</td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="1">&nbsp;&nbsp;&nbsp;บ้านเลขที่ : <label ng-bind="caseFile.houseno_case"></label></td>
+                                    <td colspan="1">หมู่ที่ : <label ng-bind="caseFile.villageno_case"></label></td>
+                                    <td colspan="1">ซอย/ตรอก : <label ng-bind="caseFile.road_case"></label></td>
+                                    <td colspan="1">ถนน : <label ng-bind="caseFile.lane_alley_case"></label></td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="1">&nbsp;&nbsp;&nbsp;ตำบล : <label ng-bind="caseFile.subdistrict_case"></label></td>
+                                    <td colspan="1">อำเภอ : <label ng-bind="caseFile.disreict_case"></label></td>
+                                    <td colspan="2">จังหวัด : <label ng-bind="caseFile.province_case"></label></td>
+
+                                </tr>
+                                <tr>
+
+                                    <td colspan="4"><li>พนักงานสอบสวนเจ้าของคดี : <label ng-bind="caseFile.rank_police+' '+caseFile.name_police+' '+caseFile.surname_police+' โทร :'+caseFile.tel_police"></label></td>
+
+                                </tr>
+
+
+                            </ol>
+
+
+
+                        </table>
+
+                    </form>
+                    <br>
+                    <h4 class="page-header">ข้อมูลบุคคลที่กระทำความผิด</h4>
+                    <form class="form-horizontal" role="form"  ng-repeat="person in caseFile.criminalhistory">
+                        <accordion close-others="oneAtATime" ng-if="person">
+                            <accordion-group is-open="status.open">
+                                <accordion-heading>
+                                    <a ng-bind="' <% $index+1 %>. '+person.name +' '+person.surname"></a><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                </accordion-heading>
+                                <div class="panel-body">
+
+                                    <form class="form-horizontal">
+
+                                        <div ng-include="'/app/datacase/_add_preview_person.html'" ></div>
+
+
+                                    </form>
+
+
+
+                                </div>
+                            </accordion-group>
+                        </accordion>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>

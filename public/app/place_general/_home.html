@@ -1,0 +1,129 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a href="#">จัดการประวัติสถานที่ทั่วไป</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+
+
+
+<div class="row page-header">
+    <div class="col-sm-8">
+        <h1 class="">จัดการประวัติสถานที่ทั่วไป</h1>
+    </div>
+    <div class="col-sm-4 text-right padding-top-20">
+        <a class="btn btn-success" ui-sref="form_add.add" title="บันทึกประวัติสถานที่ทั่วไป"><i class="fa fa-user-plus" ></i>
+            เพิ่มประวัติสถานที่ทั่วไป</a>
+    </div>
+</div>
+
+
+<div class="panel panel-default"  id="scroll_home">
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th class="text-center">
+                        <input placeholder="เลขบัตร" ng-model="search.idcard" type="text" class="form-control" ng-model="keyword.idcard" />
+                    </th>
+                    <th class="text-center">
+                        <input placeholder="ประเภทสถานที่" ng-model="search.typepeople" type="text" class="form-control" ng-model="keyword.typepeople" />
+                    </th>
+
+                    <th class="text-center">
+                        <input placeholder="ชื่อ" ng-model="search.name" type="text" class="form-control" ng-model="keyword.name" />
+
+                    </th>
+                    <th class="text-center">
+                        <input placeholder="สกุล" ng-model="search.surname" type="text" class="form-control" ng-model="keyword.name" />
+
+                    </th>
+                    <th class="text-center">
+                        <input placeholder="วันที่บันทึก" id="mydateth" ng-model="search.date" type="text" class="form-control" ng-model="keyword.surname" />
+                    </th>
+                    <th class="text-center">
+                    </th>
+                    <th class="text-center">
+                    </th>
+                </tr>
+                <tr>
+                    <th class="text-center">เลขบัตร</th>
+                    <th class="text-center">ชื่อ</th>
+                    <th class="text-center">นามสกุล</th>
+                    <th class="text-center">วันเวลาที่บันทึก</th>
+                    <th class="text-center">สถานะ</th>
+                    <th class="text-center" style="width: 11%"></th>
+                </tr>
+
+
+                </thead>
+
+                <tbody>
+
+                <tr ng-repeat="person_general in data_person_generals | filter:search as results">
+                    <td class="text-center" ng-if="person_general.typeidcard == 0">บัตรประชาชน</td>
+                    <td class="text-center" ng-if="person_general.typeidcard == 1">หนังสือเดินทาง</td>
+                    <td class="text-center" ng-bind="person_general.idcard"></td>
+                    <td class="text-center" ng-bind="person_general.typepeople"></td>
+                    <td class="text-center" ng-bind="person_general.nametitle.name_title"></td>
+                    <td class="text-center" ng-bind="person_general.name"></td>
+                    <td class="text-center" ng-bind="person_general.surname"></td>
+                    <td class="text-center" ng-bind="person_general.date"></td>
+                    <td class="text-center">
+                        <i ng-if="person_general.status == 'complete' && person_general.photo" class="fa fa-check-circle fa-1x " style="color: #008000"
+                           popover="ประวัติสถานที่นี้สมบูรณ์แล้ว" popover-trigger="mouseenter"></i>
+                        <i ng-if="!person_general.photo" class="fa fa-exclamation-triangle fa-1x" style="color: red"
+                           popover="ยังไม่มีการอัพโหลดรูปสถานที่" popover-trigger="mouseenter"></i>
+                    </td>
+
+                    <td class="text-center">
+                        <a ng-if="!person_general.photo" ui-sref="add_photo({id:person_general.id})" class="del"><i class="fa fa-file-image-o"
+                                                                                                    popover="อัพโหลดรูปสถานที่" popover-trigger="mouseenter"></i></a>
+                        <a ui-sref="preview_person_general({id:person_general.id})" class="edit"><i class="fa fa-street-view"
+                                                                                    popover="ดูประวัติสถานที่" popover-trigger="mouseenter"></i></a>
+                        <a ng-click="printPerson(person_general)" class="edit"><i class="fa fa-print"
+                                                                           popover="พิมพ์ประวัติสถานที่" popover-trigger="mouseenter"></i></a>
+                        <a ng-if="person_general.photo" ng-click="print_Photoperson(person_general)" class="edit"><i class="fa fa-photo"
+                                                                                  popover="พิมพ์รูปภาพสถานที่" popover-trigger="mouseenter"></i></a>
+                        <a ng-if="current_role == 'admin' || current_role == 'Member_Commissioned_Officers'" ui-sref="edit({id:person_general.id})" class="edit"><i class="fa fa-edit"></i></a>
+                        <a ng-if="current_role == 'Member_Commissioned_Officers'" ng-click="delete_person(person_general)" class="del"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+                <tr class="animate-repeat" ng-if="results.length == 0">
+                    <td class="text-center" colspan="9"> ไม่พบข้อมูล!!! </td>
+
+                </tr>
+
+                </tbody>
+
+                <script type="text/javascript">
+                    $(function(){
+
+
+                        $("#mydateth").datetimepicker({
+                            timepicker:false,  // กำหนด ไม่แสดงตัวเลือกเวลา
+                            format:'วันที่ d เดือน F พ.ศ. Y',
+                            lang:'th',  // แสดงภาษาไทย
+                            yearStart:1914,  // ช่วงเลือกปีเริ่มต้น ใช้ ค.ศ.
+                            yearOffset:543,  // ใช้ปี พ.ศ. บวก 543 เพิ่มเข้าไปในปี ค.ศ
+
+                            closeOnDateSelect:true // ปิด ถ้าเลือกวันที่แล้ว
+                        });
+
+
+
+                    });
+                </script>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

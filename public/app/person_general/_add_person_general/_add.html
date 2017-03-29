@@ -1,0 +1,94 @@
+
+<div class="row bs-wizard" style="border-bottom:0;">
+
+    <div class="col-xs-3 bs-wizard-step active">
+        <div class="text-center bs-wizard-stepnum ">ขั้นตอนที่ 1</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot"></a>
+        <div class="bs-wizard-info text-center">กรอกข้อมูลบุคคล</div>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step "><!-- complete -->
+        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 2</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot1"></a>
+        <div class="bs-wizard-info text-center">อัพโหลดรูปภาพบุคคล</div>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step "><!-- complete -->
+        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 3</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot1"></a>
+        <div class="bs-wizard-info text-center">ตรวจสอบ/ยืนยัน</div>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step "><!-- complete -->
+        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 4</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot1"></a>
+        <div class="bs-wizard-info text-center">บันทึกข้อมูลเสร็จสมบูรณ์</div>
+    </div>
+
+
+</div>
+
+
+<div class="row page-header">
+    <div class="col-sm-8">
+        <h1 class="">เพิ่มประวัติบุคคลทั่วไป</h1>
+    </div>
+    <div class="col-sm-4 text-right padding-top-20">
+        <button type="button" ui-sref="form_add.photo" class="btn btn-warning"><i class="fa fa-arrow-right"></i> ตรวจสอบประวัติ/บันทึกประวัติ</button>
+        <button type="button"  ui-sref="home" class="btn btn-danger"><i class="fa fa-times"></i> ยกเลิก</button></div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-pencil-square-o"></i>
+                    <span>เพิ่มประวัติบุคคลทั่วไป</span>
+                </div>
+
+            </div>
+            <div class="box-content">
+                <tabset id="menutab" justified="true"  type="pills">
+                    <tab id="tab1" heading="ข้อมูลส่วนตัว">
+                        <br>
+                        <div ng-include="'/app/person_general/_add_person_general/_add_person_general_profile.html'" ></div>
+                    </tab>
+                    <tab id="tab2" heading="ที่อยู่/ที่ทำงาน">
+                        <br>
+                        <div ng-include="'/app/person_general/_add_person_general/_add_person_general_address.html'" ></div>
+                    </tab>
+                    <tab id="tab3" heading="ข้อมูลครอบครัว">
+                        <br>
+                        <div ng-include="'/app/person_general/_add_person_general/_add_person_general_family.html'" ></div>
+                    </tab>
+                    <tab id="tab4" heading="ยานพาหนะ">
+                        <br>
+                        <div ng-include="'/app/person_general/_add_person_general/_add_person_general_vehicle.html'" ></div>
+                    </tab>
+                    <tab id="tab5" heading="คนรับใช้-ลูกจ้าง">
+                        <br>
+                        <div ng-include="'/app/person_general/_add_person_general/_add_person_general_employee.html'" ></div>
+                    </tab>
+                    <tab id="tab6" heading="อื่นๆที่น่าสนใจ">
+                        <br>
+                        <div ng-include="'/app/person_general/_add_person_general/_add_person_general_other.html'" ></div>
+                    </tab>
+
+
+
+                </tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

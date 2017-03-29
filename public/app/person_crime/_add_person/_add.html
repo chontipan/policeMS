@@ -1,0 +1,90 @@
+
+    <div class="row bs-wizard" style="border-bottom:0;">
+
+        <div class="col-xs-3 bs-wizard-step active">
+            <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 1</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-center">กรอกข้อมูลบุคคล</div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step "><!-- complete -->
+            <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 2</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot1" ></a>
+            <div class="bs-wizard-info text-center">อัพโหลดรูปภาพบุคคล</div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step "><!-- complete -->
+            <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 3</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot1"></a>
+            <div class="bs-wizard-info text-center">ตรวจสอบ/ยืนยัน</div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step "><!-- complete -->
+            <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 4</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot1"></a>
+            <div class="bs-wizard-info text-center">บันทึกข้อมูลเสร็จสมบูรณ์</div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+<div class="row page-header">
+    <div class="col-sm-8">
+        <h2 class="">เพิ่มประวัติบุคคลที่เกี่ยวข้องกับอาชญากรรม</h2>
+    </div>
+    <div class="col-sm-4 text-right padding-top-20">
+        <button type="button" ui-sref="form_add.photo" class="btn btn-warning"><i class="fa fa-arrow-right"></i> อัพโหลดรูปภาพบุคคล</button>
+        <button type="button"  ng-click="cancelPersonCrime()" class="btn btn-danger"><i class="fa fa-times"></i> ยกเลิก</button></div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="box">
+    <div class="box-header">
+        <div class="box-name">
+            <i class="fa fa-search"></i>
+            <span>เพิ่มประวัติบุคคลที่เกี่ยวข้องกับอาชญากรรม</span>
+
+        </div>
+
+    </div>
+
+    <div class="box-content" >
+        <div class="dataTable_wrapper">
+            <tabset justified="true"  type="pills">
+                <tab id="tab1" heading="ข้อมูลส่วนตัว">
+                    <br>
+                    <div ng-include="'/app/person_crime/_add_person/_add_person_profile.html'" ></div>
+                </tab>
+                <tab id="tab2" heading="ที่อยู่และสถานที่ทำงาน">
+                    <br>
+                    <div ng-include="'/app/person_crime/_add_person/_add_person_address.html'" ></div>
+                </tab>
+
+                <tab id="tab3" heading="ข้อมูลครอบครัว">
+                    <br>
+                    <div ng-include="'/app/person_crime/_add_person/_add_person_family.html'" ></div>
+                </tab>
+                <tab id="tab4" heading="ตำหนิรูปพรรณ">
+                    <br>
+                    <div ng-include="'/app/person_crime/_add_person/_add_person_description.html'" ></div>
+                </tab>
+                <tab id="tab5" heading="ข้อมูลคดี">
+                    <br>
+                    <div ng-include="'/app/person_crime/_add_person/_add_person_datacase.html'" ></div>
+                </tab>
+
+
+            </tabset>
+        </div>
+
+
+    </div>
+</div>

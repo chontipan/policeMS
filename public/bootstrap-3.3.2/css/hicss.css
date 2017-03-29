@@ -1,0 +1,46 @@
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/*TEXTBOX , TEXTAREA */
+fieldset {
+  width: 350px;
+}
+
+.textInput,textarea {
+  width: 200px;
+  font-family: arial;
+  background-color: #FFFFFF;
+  border: 1px solid #000;
+}
+
+.inputHighlighted {
+ display: block;
+  width: 100%;
+  height: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+
+  color: #000000;
+
+  background-color: #E6E6FA;
+
+  background-image: none;
+
+  border: 1px solid #E6E6FA;
+
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+

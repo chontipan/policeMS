@@ -1,0 +1,113 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a href="#">จัดการข้อมูลเจ้าหน้าที่</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="row page-header">
+            <div class="col-sm-6">
+                <h1 class="">จัดการข้อมูลเจ้าหน้าที่</h1>
+            </div>
+            <div class="col-sm-6 text-right padding-top-20">
+                <a class="btn btn-success" ui-sref="add" title="Add new User"><i class="fa fa-plus-square" ></i> เพิ่มเจ้าหน้าที่ตำรวจ</a>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="panel panel-default" >
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class=""></h1>
+                    </div>
+                    <div class="col-sm-6 text-right padding-top-20">
+                        <h5>พบเจ้าหน้าที่จำนวน <% results.length %> คน</h5>
+                        </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="dataTable_wrapper">
+                    <table class="table table-striped table-bordered table-hover example-animate-container">
+                        <thead>
+                        <tr>
+                            <th>
+                                <input ng-model="search.username" type="text" class="form-control" >
+                            </th>
+                            <th>
+                                <select ng-model="search.position.name_position" type="text" class="form-control" >
+                                    <option ></option>
+                                    <option ng-repeat="position in positions" value="<% position.name_position %>"><% position.name_position %></option>
+                                </select>
+                            </th>
+                            <th>
+                                <select ng-model="search.rank.rank" type="text" class="form-control" >
+                                    <option ></option>
+                                    <option ng-repeat="rank in ranks" value="<% rank.rank %>"><% rank.rank %></option>
+                                </select>
+                            </th>
+                            <th>
+                                <input ng-model="search.name_police" type="text" class="form-control" >
+                            </th>
+                            <th>
+                                <input ng-model="search.surname_police" type="text" class="form-control">
+                            </th>
+                            <th>
+                                <input ng-model="search.tel_police" type="text" class="form-control">
+                            </th>
+                            <th>
+                                <select ng-model="search.role.name" type="text" class="form-control">
+                                    <option ></option>
+                                    <option ng-repeat="role in roles" value="<% role.name %>"><% role.name %></option>
+
+                                </select>
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+
+                            <th class="text-center" style="width: 12%">ชื่อผู้ใช้</th>
+                            <th class="text-center" style="width: 15%">ตำแหน่ง</th>
+                            <th class="text-center" style="width: 15%">คำนำหน้า</th>
+                            <th class="text-center" style="width: 15%">ชื่อ</th>
+                            <th class="text-center" style="width: 15%">นามสกุล</th>
+                            <th class="text-center" style="width: 10%">เบอร์โทร</th>
+                            <th class="text-center" style="width: 10%">สิทธิ</th>
+                            <th class="text-center" style="width: 7%"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr class="animate-repeat" ng-repeat="police in datapolices | filter:search as results">
+                            <td class="text-center" ng-bind="police.username"></td>
+                            <td class="text-center"ng-bind="police.position.name_position"></td>
+                            <td class="text-center" ng-bind="police.rank.rank"></td>
+                            <td class="text-center" ng-bind="police.name_police"></td>
+                            <td class="text-center" ng-bind="police.surname_police"></td>
+                            <td class="text-center" ng-bind="police.tel_police"></td>
+                            <td class="text-center" ng-bind="police.role.name"></td>
+                            <td class="text-center">
+                                <a ui-sref="edit({id:police.id})" class="edit"><i  popover="แก้ไขข้อมูล" popover-trigger="mouseenter" class="fa fa-edit"></i></a>
+                                <a ng-if="police.id != current_role" ng-click="deletePolice(police)" class="del"><i  popover="ลบข้อมูล" popover-trigger="mouseenter" class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                        <tr class="animate-repeat" ng-if="results.length == 0">
+                            <td class="text-center" colspan="8"> ไม่พบข้อมูล!!! </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

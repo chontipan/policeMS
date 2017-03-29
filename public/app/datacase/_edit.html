@@ -1,0 +1,66 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref="home">ข้อมูลคดี</a></li>
+            <li><a href="#">จัดการข้อมูลคดี</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+
+
+<div class="row page-header">
+    <div class="col-sm-8">
+        <h3 class="">จัดการข้อมูลคดี</h3>
+    </div>
+    <div class="col-sm-4 text-right padding-top-20">
+        <a type="button" ng-click="edit_case()" class="btn btn-success" data-dismiss="modal"><i class="fa fa-floppy-o"></i> บันทึก</a>
+        <a type="button" ui-sref="home" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-home"></i> กลับ</a>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i>
+                    <span>จัดการข้อมูลคดี</span>
+                </div>
+
+
+            </div>
+            <div class="box-content">
+                    <tabset >
+                        <tab heading="ข้อมูลคดี" >
+                            <br>
+                            <div ng-include="'/app/datacase/_edit_form.html'" ></div>
+                        </tab>
+                        <tab heading="อัพโหลดไฟล์คดี" >
+                            <br>
+                            <div ng-include="'/app/datacase/_edit_file.html'"  ></div>
+                        </tab>
+                        <tab heading="เพิ่มประวัติบุคคลที่เกี่ยวข้องกับอาชญากรรม" >
+                            <br>
+                            <div ng-include="'/app/datacase/_edit_person/_edit_person.html'" ></div>
+                        </tab>
+                        <tab heading="แสดงตัวอย่าง">
+                            <br>
+                            <div ng-include="'/app/datacase/_edit_preview_case.html'" ></div>
+                        </tab>
+                        <tab heading="พิมพ์รายการคดี">
+                            <br>
+                            <div ng-include="'/app/datacase/_edit_print_case.html'" ></div>
+                        </tab>
+                    </tabset>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

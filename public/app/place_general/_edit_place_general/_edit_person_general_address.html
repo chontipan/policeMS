@@ -1,0 +1,132 @@
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+
+            <div class="box-content">
+                <h4 class="page-header">ข้อมูลที่อยู่</h4>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" style="width: auto">ที่อยู่ปัจจุบัน</label>
+
+                        <div class="col-sm-7">
+                            <textarea ng-model="guest.addresspresent.present_address" type="text" class="form-control"></textarea>
+
+                        </div>
+                        <label class="col-sm-1 control-label" style=" width: auto">โทร</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.addresspresent.present_tel" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label" style="width: auto">ภูมิลำเนาเดิม</label>
+
+                        <div class="col-sm-7">
+                            <textarea ng-model="guest.addressoriginal.original_address" type="text" class="form-control"></textarea>
+
+                        </div>
+                        <label class="col-sm-1 control-label" style="width: auto">โทร</label>
+
+                        <div class="col-sm-3">
+                            <input ng-model="guest.addressoriginal.original_tel" type="text" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-7">
+        <div class="box">
+            <div class="box-content">
+                <h4 class="page-header">เพิ่มสถานที่ทำงาน</h4>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" >ชื่อที่ทำงาน</label>
+
+                        <div class="col-sm-7">
+                            <input ng-model="addoffice.office" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">สถานที่ตั้ง</label>
+
+                        <div class="col-sm-7">
+                            <textarea ng-model="addoffice.office_address" type="text" class="form-control"></textarea>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">โทร</label>
+
+                        <div class="col-sm-7">
+                            <input ng-model="addoffice.office_tel" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
+                            <button type="button" ng-click="saveDataOffice()" class="btn btn-success" data-dismiss="modal">
+                                เพิ่ม
+                            </button>
+                            \
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-5">
+        <div class="box">
+            <div class="box-content">
+                <h4 class="page-header">รายการสถานที่ทำงาน</h4>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>ชื่อ</th>
+
+                        <th>สถานที่ตั้ง</th>
+                        <th>เบอร์โทร</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="dataoffice in guest.addressoffice ">
+                        <td ng-bind="dataoffice.office"></td>
+
+                        <td ng-bind="dataoffice.office_address "></td>
+                        <td ng-bind="dataoffice.office_tel"></td>
+
+
+                        <td>
+                            <button ng-click="DeleteDataOffice(dataoffice)" type="button" class="btn btn-default"
+                                    aria-label="Left Align">
+                                <span class="fa fa-times" aria-hidden="true"></span>
+                            </button>
+                        </td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

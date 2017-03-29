@@ -1,0 +1,96 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการประวัติบุคคลที่เกี่ยวข้องกับอาชญากรรม</a></li>
+            <li><a href="#">แก้ไขประวัติบุคคลที่เกี่ยวข้องกับอาชญกรรม</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+    <div class="row page-header" ng-if="current_role == 'Member_Commissioned_Officers'">
+            <div class="col-sm-8">
+                <h1 class="">แก้ไขประวัติบุคคลที่เกี่ยวข้องกับอาชญกรรม</h1>
+            </div>
+            <div class="col-sm-4 text-right padding-top-20">
+                <button type="button" ng-click="editpreson()" class="btn btn-primary"><i class="fa fa-floppy-o"></i> บันทึกทะเบียนประวัติ</button>
+                <button type="button"  ui-sref="home" class="btn btn-danger"><i class="fa fa-home"></i> กลับ</button>
+            </div>
+            <!-- /.col-lg-12 -->
+
+    </div>
+
+
+<div class="row" ng-if="current_role == 'Member_Commissioned_Officers'">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i>
+                    <span>แก้ไขประวัติบุคคลที่เกี่ยวข้องกับอาชญากรรม</span>
+                </div>
+
+            </div>
+            <div class="box-content">
+                <div class="row panel-body"  id="scroll_demo" >
+                    <tabset justified="true"  type="pills" >
+
+                        <tab id="tab1" heading="ข้อมูลส่วนตัว">
+                            <br>
+                            <div ng-include="'/app/person_crime/_edit_person/_edit_person_profile.html'" ></div>
+                        </tab>
+                        <tab id="tab2" heading="ที่อยู่และสถานที่ทำงาน">
+                            <br>
+                            <div ng-include="'/app/person_crime/_edit_person/_edit_person_address.html'" ></div>
+                        </tab>
+                        <tab id="tab3" heading="ข้อมูลครอบครัว">
+                            <br>
+                            <div ng-include="'/app/person_crime/_edit_person/_edit_person_family.html'" ></div>
+                        </tab>
+                        <tab id="tab4" heading="ตำหนิรูปพรรณ">
+                            <br>
+                            <div ng-include="'/app/person_crime/_edit_person/_edit_person_description.html'" ></div>
+                        </tab>
+                        <tab id="tab5" heading="ข้อมูลคดี">
+                            <br>
+                            <div ng-include="'/app/person_crime/_edit_person/_edit_person_datacase.html'" ></div>
+                        </tab>
+                        <tab id="tab6" heading="รูปภาพ">
+                            <br>
+                            <div ng-include="'/app/person_crime/_edit_person/_edit_person_photo.html'" ></div>
+                        </tab>
+
+
+                    </tabset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-if="current_role == 'admin' || current_role == 'Member_Non-Commissioned_Officer'">
+    <div class="col-xs-12 text-center page-404">
+        <h2>ท่านไม่มีสิทธิการเข้าใช้งานในส่วนนี้</h2>
+        <form class="form-group" role="form">
+            <br>
+            <br>
+            <div class="text-center">
+
+                <i class="fa fa-wrench fa-5x"></i>
+
+            </div>
+            <br>
+            <div class="text-center">
+
+                <a ui-sref="home" class="btn btn-default btn-label-left"><span><i class="fa fa-reply"></i></span> กลับหน้าหลัก</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

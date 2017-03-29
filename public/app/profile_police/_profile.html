@@ -1,0 +1,62 @@
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการข้อมูลส่วนตัว</a></li>
+
+        </ol>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><%police.rank.rank +' ' +police.name_police +' '+police.surname_police%></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " ng-if="police.photo" align="center"> <img alt="User Pic" ng-src="<% police.photo %>" class="img-rounded" style="width: 250px;height: 250px"> </div>
+
+                        <div class="col-md-3 col-lg-3 " ng-if="!police.photo" align="center"> <img alt="User Pic" ng-src="/img/square-image.png" class="img-rounded" style="width: 250px;height: 250px"> </div>
+
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+
+                                <tr>
+                                    <td>ยศ : <label ng-bind="police.rank.rank"></label></td>
+                                    <td>ชื่อ : <label ng-bind="police.name_police"></label></td>
+                                    <td>นามสกุล : <label ng-bind="police.surname_police"></label></td>
+                                </tr>
+
+                                <tr>
+                                    <td>ตำแหน่ง : <label ng-bind="police.position.name_position"></label></td>
+
+                                </tr>
+                                <tr>
+                                    <td>เบอร์โทร : <label ng-bind="police.tel_police"></label></td>
+
+                                </tr>
+
+
+
+
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer text-right">
+
+                            <a data-original-title="Edit this user" data-toggle="tooltip" ui-sref="edit_profile" type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"> แก้ไขข้อมูล</i></a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

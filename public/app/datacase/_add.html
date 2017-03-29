@@ -1,0 +1,301 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการคดี</a></li>
+            <li><a ui-sref="add">เพิ่มคดี</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+        <div class="row page-header">
+            <div class="">
+                <div class="row bs-wizard" style="border-bottom:0;">
+
+                    <div class="col-xs-3 bs-wizard-step active">
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 1</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot"></a>
+                        <div class="bs-wizard-info text-center">เพิ่มข้อมูลคดี</div>
+                    </div>
+
+                    <div class="col-xs-2 bs-wizard-step"><!-- complete -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 2</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot1"></a>
+                        <div class="bs-wizard-info text-center">เพิ่มบุคคล</div>
+                    </div>
+
+                    <div class="col-xs-2 bs-wizard-step"><!-- complete -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 3</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot1"></a>
+                        <div class="bs-wizard-info text-center">เพิ่มไฟล์คดี</div>
+                    </div>
+
+                    <div class="col-xs-2 bs-wizard-step"><!-- complete -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 4</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot1"></a>
+                        <div class="bs-wizard-info text-center">ตรวจสอบ/ยืนยัน</div>
+                    </div>
+
+                    <div class="col-xs-3 bs-wizard-step "><!-- complete -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 5</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot1"></a>
+                        <div class="bs-wizard-info text-center">บันทึกข้อมูลเสร็จสมบูรณ์</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+
+            </div>
+            <div class="col-sm-4 text-right padding-top-20">
+                <button type="button" ng-click="saveCaseFileWrong()" class="btn btn-primary"><i class="fa fa-arrow-right"></i> ขั้นตอนต่อไป</button>
+                <button type="button"  ui-sref="home" class="btn btn-danger"><i class="fa fa-times"></i> ยกเลิก</button></div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i>
+                    <span>เพิ่มข้อมูลคดี</span>
+                </div>
+
+            </div>
+                <div class="box-content">
+
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">เลขคดี:</label>
+
+                            <div class="col-sm-3">
+                                <input type="hidden" ng-model="caseFile.status" >
+                                <input type="text" ng-model="caseFile.number_case" class="form-control" placeholder="เลขคดี">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" ng-model="caseFile.year_number_case" class="form-control" placeholder="ปี">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" ng-model="caseFile.station_number_case" class="form-control" placeholder="สถานีตำรวจ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">คดี/ข้อหา:</label>
+
+                            <div class="col-sm-7">
+
+                                <input placeholder="คดี/ข้อหา" type="text" ng-model="caseFile.name_case" class="form-control" id="description" name="description">
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">พฤติการณ์คดี:</label>
+
+                            <div class="col-sm-7">
+                                <textarea placeholder="พฤติการณ์คดี" ng-model="caseFile.circumstances_case" class="form-control" rows="7"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">วันที่เกิดเหตุ:</label>
+
+                            <div class="col-md-7">
+                                <input placeholder="วันที่เกิดเหตุ" ng-model="caseFile.date_case" type="text" class="form-control css_datetime_picker" name="date_product[]" value="" id="id_datetime_picker1" >
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-sm-3 control-label" style="font-size: 14px">สถานที่เกิดเหตุ บ้านเลขที่:</label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="caseFile.houseno_case" type="text" class="form-control"  name="date" placeholder="เลขที่">
+                            </div>
+
+                            <label class="col-sm-1 control-label" style="font-size: 14px">หมู่:</label>
+                            <div class="col-sm-3">
+                                <input ng-model="caseFile.villageno_case" type="text" class="form-control"  name="date" placeholder="หมู่">
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-sm-3 control-label" style="font-size: 14px">ตรอก/ซอย:</label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="caseFile.lane_alley_case" type="text" class="form-control"  name="date" placeholder="ตรอก/ซอย">
+                            </div>
+                            <label class="col-sm-1 control-label" style="font-size: 14px">ถนน:</label>
+                            <div class="col-sm-3">
+                                <input ng-model="caseFile.road_case" type="text" class="form-control"  name="date" placeholder="ถนน">
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-sm-3 control-label" style="font-size: 14px">ตำบล:</label>
+
+                            <div class="col-sm-3">
+                                <input ng-model="caseFile.subdistrict_case" type="text" class="form-control"  name="date" placeholder="ตำบล">
+                            </div>
+
+                            <label class="col-sm-1 control-label" style="font-size: 14px">อำเภอ:</label>
+                            <div class="col-sm-3">
+                                <input ng-model="caseFile.disreict_case" type="text" class="form-control"  name="date" placeholder="อำเภอ">
+                            </div>
+
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-sm-3 control-label" style="font-size: 14px">จังหวัด:</label>
+                            <div class="col-sm-3">
+                                <input ng-model="caseFile.province_case" type="text" class="form-control"  name="date" placeholder="จังหวัด">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-sm-3 control-label" style="font-size: 14px">พนักงานสอบสวนเจ้าของคดี:</label>
+
+                            <div class="col-sm-2">
+                                <input placeholder="ระดับยศ" type="text"  ng-model="caseFile.rank_police" class="form-control" >
+                            </div>
+                            <div class="col-sm-2">
+                                <input placeholder="ชื่อ" type="text"  ng-model="caseFile.name_police" class="form-control"  name="amount">
+                            </div>
+                            <div class="col-sm-3">
+                                <input placeholder="สกุล" type="text"  ng-model="caseFile.surname_police" class="form-control"  name="amount">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-sm-3 control-label" style="font-size: 14px">โทร:</label>
+
+                            <div class="col-sm-3">
+                                <input placeholder="โทร" type="text"  ng-model="caseFile.tel_police" class="form-control" id="" name="amount">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">อาวุธที่ใช้กระทำความผิด:</label>
+                            <div class="col-sm-4">
+                                <input placeholder="ชื่ออาวุธ" ng-model="Weapon.name_weapon" type="text" class="form-control" id="amount" name="amount">
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="button"  ng-click="addweapon()" class="btn btn-success" >เพิ่มอาวุธ</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">รายการอาวุธที่ใช้:</label>
+
+                            <div class="col-sm-5">
+                                <ui ng-repeat="dataweapon in caseFile.weapon" type=”1″>
+                                    <li><label ng-bind="dataweapon.name_weapon"></label><button type="button"  ng-click="delweapon(dataweapon)" >ลบ</button>
+
+                                </ui>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">พาหนะที่ใช้ ยี่ห้อ :</label>
+                            <div class="col-sm-2">
+                                <input placeholder="ยี่ห้อ" ng-model="Vehicle.vehicle_brand" type="text" class="form-control" id="amount" name="amount">
+                            </div>
+                            <label class="col-sm-1 control-label" style="font-size: 14px;width: auto">รุ่น :</label>
+                            <div class="col-sm-2">
+                                <input placeholder="รุ่น" ng-model="Vehicle.vehicle_generation" type="text" class="form-control" id="amount" name="amount">
+                            </div>
+                            <label class="col-sm-1 control-label" style="font-size: 14px;width: auto">สี :</label>
+                            <div class="col-sm-2">
+                                <input placeholder="สี" ng-model="Vehicle.vehicl_color" type="text" class="form-control" id="amount" name="amount">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">หมายเลขทะเบียน หมวด:</label>
+                            <div class="col-sm-2">
+                                <input placeholder="หมวด" ng-model="Vehicle.vehicle_group" type="text" class="form-control" id="amount" name="amount">
+                            </div>
+
+                            <label class="col-sm-1 control-label" style="font-size: 14px;width:auto">เลข:</label>
+                            <div class="col-sm-2">
+                                <input placeholder="เลข" ng-model="Vehicle.vehicle_number" type="text" class="form-control" id="amount" name="amount">
+                            </div>
+
+                            <label class="col-sm-1 control-label" style="font-size: 14px;width:auto">จังหวัด:</label>
+                            <div class="col-sm-2">
+                                <input placeholder="จังหวัด" ng-model="Vehicle.vehicle_province" type="text" class="form-control" id="amount" name="amount">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">
+                            </label>
+                            <div class="col-sm-2">
+                                <button type="button"  ng-click="addvehicle()" class="btn btn-success" >เพิ่มพาหนะ</button>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="font-size: 14px">รายการพาหนะที่ใช้:</label>
+
+                            <div class="col-sm-9">
+                                <ui ng-repeat="datavehicle in caseFile.vehicle">
+                                    <li><label ng-bind="'ยี่ห้อ : ' + datavehicle.vehicle_brand + ' รุ่น : ' + datavehicle.vehicle_generation
+                                                +' สี : ' + datavehicle.vehicl_color + ' ทะเบียน :' + datavehicle.vehicle_group + ' '+ datavehicle.vehicle_number+' ' + datavehicle.vehicle_province">
+
+                                    </label><button type="button"  ng-click="delvehicle(datavehicle)" >ลบ</button>
+
+                                </ui>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+
+
+        $("#id_datetime_picker1").datetimepicker({
+            format:'วันที่ d เดือน F พ.ศ. Y เวลาประมาณ H:i นาฬิกา',
+            lang:'th',  // แสดงภาษาไทย
+            yearOffset:543,  // ใช้ปี พ.ศ. บวก 543 เพิ่มเข้าไปในปี ค.ศ
+            closeOnDateSelect:true
+        });
+
+
+
+
+    });
+</script>

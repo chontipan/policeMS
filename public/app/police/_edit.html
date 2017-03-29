@@ -1,0 +1,250 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการข้อมูลเจ้าหน้าที่</a></li>
+            <li><a href="#">แก้ไขข้อมูลเจ้าหน้าที่</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-user"></i>
+                    <span>แก้ไขข้อมูลเจ้าหน้าที่</span>
+                </div>
+
+            </div>
+            <div class="box-content">
+                <div class="row page-header">
+                    <div class="col-sm-6">
+                        <h4 class="">แก้ไขข้อมูลเจ้าหน้าที่</h4>
+                    </div>
+                    <div class="col-sm-6 text-right padding-top-20">
+                        <a class="btn btn-default" ui-sref="home" title="Back"><i class="fa fa-arrow-left" ></i> กลับ</a>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <form class="form-horizontal" role="form" >
+
+                    <div class="form-group">
+                        <div class="field" flow-init flow-object="myFlow"
+                             flow-file-success="$file.msg = $message"
+                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+                             flow-file-success="flowSuccess($file,$message)" align="center">
+
+
+                            <div class="container">
+                                <hr class="soften"/>
+
+                                <button  class="btn btn-primary" ng-hide="$flow.files.length"
+                                         flow-btn flow-attrs="{accept:'image/*'}">เลือกรูปภาพ..</button>
+                                <div ng-repeat="file in myFlow.files">
+
+                                    <button  ng-if="!file.isComplete()" class="btn btn-warning" ng-show="$flow.files.length"
+                                             flow-btn flow-attrs="{accept:'image/*'}">เปลี่ยนรูปภาพ</button>
+                                    <button  ng-if="!file.isComplete()" class="btn btn-success" ng-show="$flow.files.length"
+                                             ng-click="uploadFile()">ยืนยัน</button>
+                                    <button  class="btn btn-danger"  ng-if="!file.isComplete()" ng-click="cancelFile(file)">
+                                        ลบรูป
+                                    </button>
+
+                                </div>
+
+                                <br>
+                                <p >
+                                    Only PNG,GIF,JPG files allowed.
+                                </p>
+
+                                <div>
+                                    <div ng-if="$flow.files.length==0 &&  !police.photo" class="">
+                                        <img src="/img/square-image.png" width="400" height="300"/>
+                                    </div>
+
+                                    <div ng-if="$flow.files.length==0 && police.photo" class="">
+                                        <div id="simple_gallery" class="box-content">
+                                            <a class="fancybox" ng-href="<% police.photo %>" title="<% police.name_police %> <% police.surname_police %>">
+                                                <img ng-src="<% police.photo %>" alt="" width="256" height="256" />
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div ng-repeat="file in myFlow.files">
+
+                                        <div class="">
+                                            <a ng-if="file.isComplete()" href="#" class="">
+                                                <i class=""></i>
+                                            </a>
+                                            <img flow-img="file"width="400" height="300"/>
+                                            <div class="" ng-if="file.isUploading()">
+                                                <div class="" data-percent="<% file.progress() %>"></div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <tr ng-repeat="file in $flow.files">
+                                            <td>ชื่อไฟล์ <% file.name %></td>
+                                        </tr>
+
+
+                                    </div>
+
+                                    <br>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.username">
+                        <label class="col-md-4 control-label">ชื่อผู้ใช้งาน</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="username" ng-model="police.username" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-error has-feedback" ng-if="error.username" ng-repeat="error_username in error.username">
+                        <label class="col-md-4 control-label">ชื่อผู้ใช้งาน</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="username" ng-model="police.username">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_username"></span>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group" ng-if="!error.position">
+                        <label class="col-sm-4 control-label">ตำแหน่ง</label>
+                        <div class="col-sm-6">
+                            <select ng-model="police.position" class="form-control css-require" ng-options="opt as opt.name_position for opt in positions">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-error has-feedback" ng-if="error.position" ng-repeat="error_position in error.position">
+                        <label class="col-md-4 control-label">ตำแหน่ง</label>
+                        <div class="col-md-6">
+                            <select ng-model="police.position" class="form-control css-require" ng-options="opt as opt.name_position for opt in positions">
+                            </select>
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_position"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.rank">
+                        <label class="col-sm-4 control-label">คำนำหน้าชื่อ</label>
+                        <div class="col-sm-6">
+                            <select ng-model="police.rank" class="form-control css-require" ng-options="opt as opt.rank for opt in ranks">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.rank" ng-repeat="error_rank in error.rank">
+                        <label class="col-md-4 control-label">คำนำหน้าชื่อ</label>
+                        <div class="col-md-6">
+                            <select ng-model="police.rank" class="form-control css-require" ng-options="opt as opt.rank for opt in ranks">
+
+                            </select>
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_rank"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.name_police">
+                        <label class="col-md-4 control-label">ชื่อ</label>
+                        <div class="col-md-6">
+                            <input ng-model="police.name_police" type="text" class="form-control" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.name_police" ng-repeat="error_name_police in error.name_police">
+                        <label class="col-md-4 control-label">ชื่อ</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="police.name_police">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_name_police"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" ng-if="!error.surname_police">
+                        <label class="col-md-4 control-label">ชื่อสกุล</label>
+                        <div class="col-md-6">
+                            <input ng-model="police.surname_police" type="text" class="form-control" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.surname_police" ng-repeat="error_surname_police in error.surname_police">
+                        <label class="col-md-4 control-label">ชื่อสกุล</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="police.surname_police">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_surname_police"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" ng-if="!error.tel_police">
+                        <label class="col-md-4 control-label">เบอร์โทร</label>
+                        <div class="col-md-6">
+                            <input ng-model="police.tel_police" type="text" class="form-control" name="tel">
+                        </div>
+                    </div>
+                    <div class="form-group has-error has-feedback" ng-if="error.tel_police" ng-repeat="error_tel_police in error.tel_police">
+                        <label class="col-md-4 control-label">เบอร์โทร</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="police.tel_police">
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_tel_police"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="!error.role">
+                        <label class="col-sm-4 control-label">สิทธิการเข้าใช้งาน</label>
+                        <div class="col-sm-6">
+                            <select ng-model="police.role" class="form-control css-require" ng-options="opt as opt.name for opt in roles">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-error has-feedback" ng-if="error.role" ng-repeat="error_role in error.role">
+                        <label class="col-md-4 control-label">สิทธิการเข้าใช้งาน</label>
+                        <div class="col-md-6">
+                            <select ng-model="police.role" class="form-control css-require" ng-options="opt as opt.name for opt in roles">
+                            </select>
+                            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
+                            <span class="control-label color-red" for="username" ng-bind="' '+ error_role"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-success" ng-click="editPolice()">
+                                <i class="fa fa-floppy-o"></i> บันทึกข้อมูล
+                            </button>
+                            <button type="submit" class="btn btn-danger"  ui-sref="home">
+                                <i class="fa fa-remove" ></i> ยกเลิก
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

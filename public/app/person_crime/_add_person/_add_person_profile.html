@@ -1,0 +1,192 @@
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document" style="width: auto">
+        <div class="modal-content" >
+            <div class="modal-header">
+               <h3>ข้อมูลบุคคลทั่วไป<% person.idcard %></h3>
+            </div>
+            <div class="modal-body">
+                <div ng-include="'/app/person_crime/_viewdata_person_general.html'"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document" style="width: auto">
+        <div class="modal-content" >
+            <div class="modal-header">
+              <h3>ข้อมูลบุคคลที่เกี่ยวข้องกับอาชญากรรม<% person.idcard %></h3>
+            </div>
+            <div class="modal-body">
+                <div ng-include="'/app/person_crime/_viewdata_person_crime.html'"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12">
+              <div class="box">
+
+                  <div class="box-content">
+                  <h4 class="page-header">ข้อมูลส่วนตัว</h4>
+                  <form class="form-horizontal" role="form">
+
+                          <div class="form-group">
+
+                              <div class="col-sm-3">
+                                  <select ng-model="person.typeidcard" class="form-control" >
+                                      <option value="" disabled selected>เลือกประเภทบัตร...</option>
+                                      <option value="0">เลขบัตรประจำตัวประชาชน</option>
+                                      <option value="1">เลขหนังสือเดินทาง</option>
+                                  </select>
+                              </div>
+
+                              <div class="col-sm-4">
+                                  <input   ng-change="searchDataPerson(person)" ng-model="person.idcard" type="" class="form-control" placeholder="เลขบัตร">
+
+                                  <label  ng-if="dataperson_crime.length" class="control-label" style="width: auto;color: red"> พบประวัติเกี่ยวข้องกับอาชญากรรม</label>
+
+                                  <button ng-if="dataperson_crime.length" type="button" class="btn btn-primary" data-toggle="modal"
+                                          data-target="#exampleModa2" data-whatever="@mdo">ดูข้อมูล</button>
+
+                                  <label  ng-if="dataperson_general.length" class="control-label" style="width: auto;color: red"> พบประวัติบุคคลทั่วไป</label>
+                                  <button ng-if="dataperson_general.length" type="button" class="btn btn-primary" data-toggle="modal"
+                                          data-target="#exampleModal" data-whatever="@mdo">ดูข้อมูล</button>
+
+
+
+
+                              </div>
+                              <label class="col-sm-1 control-label" style="width: auto">ประเภทบุคคล</label>
+
+                              <div class="col-sm-3">
+                                  <input ng-model="person.typepeople" type="text" class="form-control" placeholder="ประเภทบุคคล">
+                              </div>
+
+
+
+
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-sm-1 control-label" style="width: auto">คำนำหน้า</label>
+
+                              <div class="col-sm-2">
+                                  <input placeholder="คำนำหน้า" ng-model="person.nametitle" type="text" class="form-control">
+                              </div>
+                              <label class="col-sm-1 control-label" style="width: auto">ชื่อ</label>
+
+                              <div class="col-sm-4">
+                                  <input ng-model="person.name" type="text" class="form-control" placeholder="ชื่อ">
+                              </div>
+                              <label class="col-sm-1 control-label" style="width: auto">ชื่อสกุล</label>
+
+                              <div class="col-sm-3">
+                                  <input ng-model="person.surname" type="text" class="form-control" placeholder="สกุล">
+                              </div>
+                          </div>
+
+
+
+                          <div class="form-group">
+                              <label class="col-sm-1 control-label" style="width: auto">นามเเฝง</label>
+
+                              <div class="col-sm-3">
+                                  <input ng-model="person.alias" type="text" class="form-control" placeholder="นามแฝง">
+
+                              </div>
+                              <label class="col-sm-1 control-label" style="width: auto">อายุ</label>
+
+                              <div class="col-sm-3">
+                                  <input placeholder="อายุ" ng-model="person.age" type="number" class="form-control">
+
+                              </div>
+                              <label class="col-sm-1 control-label" style="width: auto">อาชีพ</label>
+
+                              <div class="col-sm-3">
+                                  <input type="text" ng-model="person.career" class="form-control" placeholder="อาชีพ">
+                              </div>
+                              <label class="col-sm-1 control-label" style="width: auto">การศึกษา</label>
+
+                              <div class="col-sm-3">
+                                  <input type="text" ng-model="person.education" class="form-control" placeholder="การศึกษา">
+                              </div>
+
+                          </div>
+
+                          <div class="form-group">
+
+                              <label class="col-sm-1 control-label" style="width: auto">วันที่จับกุม</label>
+
+                              <div class="col-sm-5">
+                                  <input ng-model="person.date" type="text" class="form-control" value="" id="id_datetime_picker0" placeholder="วันที่ dd เดือน mmmm พ.ศ. yyyy เวลาประมาณ hh:mm นาฬิกา">
+                              </div>
+
+
+                          </div>
+
+                      </form>
+
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <div class="pull-right">
+                                  <button type="button" ng-click="showTab('tab2')" class="btn btn-primary">ถัดไป</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+<script type="text/javascript">
+    $(function () {
+
+
+        $("#id_datetime_picker0").datetimepicker({
+            timepicker:true,
+            format:'วันที่ d เดือน F พ.ศ. Y เวลาประมาณ H:i นาฬิกา',
+            lang:'th',  // แสดงภาษาไทย
+            yearStart:1914,  // ช่วงเลือกปีเริ่มต้น ใช้ ค.ศ.
+            yearOffset:543,  // ใช้ปี พ.ศ. บวก 543 เพิ่มเข้าไปในปี ค.ศ
+            closeOnDateSelect:true
+        });
+
+
+
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(function(){
+
+
+        $("#mydateth").datetimepicker({
+            timepicker:false,  // กำหนด ไม่แสดงตัวเลือกเวลา
+            format:'d-m-Y',  // กำหนดรูปแบบวันที่ ที่ใช้ เป็น 00-00-0000
+            lang:'th',  // แสดงภาษาไทย
+            yearStart:1914,  // ช่วงเลือกปีเริ่มต้น ใช้ ค.ศ.
+            yearOffset:543,  // ใช้ปี พ.ศ. บวก 543 เพิ่มเข้าไปในปี ค.ศ
+
+            closeOnDateSelect:true // ปิด ถ้าเลือกวันที่แล้ว
+        });
+
+
+
+    });
+</script>

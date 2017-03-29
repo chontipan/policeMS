@@ -1,0 +1,124 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการคดี</a></li>
+            <li><a ui-sref="add">เพิ่มคดี</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+<div ng-if="caseFile.status == 'complete'">
+    <div class="row page-header">
+
+            <div class="">
+                <div class="row bs-wizard" style="border-bottom:0;">
+
+                    <div class="col-xs-3 bs-wizard-step complete">
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 1</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot"></a>
+                        <div class="bs-wizard-info text-center">เพิ่มข้อมูลคดี</div>
+                    </div>
+
+                    <div class="col-xs-2 bs-wizard-step complete"><!-- complete -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 2</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot"></a>
+                        <div class="bs-wizard-info text-center">เพิ่มบุคคล</div>
+                    </div>
+
+                    <div class="col-xs-2 bs-wizard-step complete"><!-- complete -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 3</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#" class="bs-wizard-dot"></a>
+
+                        <div class="bs-wizard-info text-center">เพิ่มไฟล์คดี</div>
+                    </div>
+
+                    <div class="col-xs-2 bs-wizard-step complete"><!-- complete -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 4</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot"></a>
+                        <div class="bs-wizard-info text-center">ตรวจสอบ/ยืนยัน</div>
+                    </div>
+
+                    <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                        <div class="text-center bs-wizard-stepnum">ขั้นตอนที่ 5</div>
+                        <div class="progress"><div class="progress-bar"></div></div>
+                        <a href="#" class="bs-wizard-dot"></a>
+                        <div class="bs-wizard-info text-center">บันทึกข้อมูลเสร็จสมบูรณ์</div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+
+    </div>
+
+
+    <div class="row" >
+        <div class="col-xs-12 col-sm-12">
+            <div class="box">
+                <div class="box-content"  id="scroll_add">
+
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <h3 class="text-center">
+                                <i class="fa fa-check-square"></i>
+                                <i class="fa fa-check-square"></i>
+                                <i class="fa fa-check-square"></i> การบันทึกข้อมูลเสร็จสมบูรณ์
+                                <i class="fa fa-check-square"></i>
+                                <i class="fa fa-check-square"></i>
+                                <i class="fa fa-check-square"></i></h3>
+                        </div>
+                        <div class="form-group text-center">
+
+                                <button type="button" ui-sref="home" class="btn btn-primary btn-app-sm"  style="width: 3cm"><i class="fa fa-home"> หน้าหลัก</i></button>
+                                <button type="button" ng-click="printCaseFile()" class="btn btn-success btn-app-sm"  style="width: 4cm"><i class="fa fa-print"> พิมพ์ข้อมูลคดี</i></button>
+
+
+                        </div>
+                        <div class="form-group text-center">
+
+
+                            <img src="/img/police.jpg" height="180" width="180" alt="">
+
+
+
+                        </div>
+                       </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-if="caseFile.status != 'complete'">
+    <div class="col-xs-12 text-center page-404">
+
+        <form class="form-group" role="form">
+            <br>
+            <h3>Oops!!, ไม่พบหน้านี้</h3>
+            <br>
+            <div class="text-center">
+
+                <i class="fa fa-refresh fa-spin fa-5x"></i>
+
+            </div>
+            <br>
+            <div class="text-center">
+
+                <a ui-sref="home" class="btn btn-default btn-label-left"><span><i class="fa fa-reply"></i></span> กลับหน้าหลัก</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+

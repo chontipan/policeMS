@@ -1,0 +1,95 @@
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/police/index">หน้าหลัก</a></li>
+            <li><a ui-sref="home">จัดการคดี</a></li>
+            <li><a href="#">ดูข้อมูลคดี</a></li>
+        </ol>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+<div class="row page-header">
+    <div class="col-sm-8">
+        <h3 class="">ดูข้อมูลคดี</h3>
+    </div>
+    <div class="col-sm-4 text-right padding-top-20">
+        <a type="button" ng-if="caseFile.file_case" href="<% caseFile.file_case %>" class="btn btn-warning" data-dismiss="modal"
+           target = "_blank"><i class="fa fa-file-pdf-o"></i> ดูไฟล์คดี</a>
+        <a type="button" ui-sref="home" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-home"></i> กลับ</a>
+    </div>
+</div>
+<div class="row" >
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+                <div class="box-content">
+                  <div class="box-content">
+
+                      <table align="center" border="0" width="100%" style="font-size: 16px">
+                          <ol>
+
+
+                              <tr>
+                                  <td colspan="2"><li>ชื่อคดี : <label ng-bind="caseFile.name_case"></label></td>
+                                  <td colspan="2"><li>เลขคดี : <label ng-bind="caseFile.number_case+' '+caseFile.year_number_case+' '+caseFile.station_number_case"></label></td>
+
+                              </tr>
+
+                              <tr>
+                                  <td colspan="4"><li>พฤติการณ์คดี : <label ng-bind="caseFile.circumstances_case"></label></td>
+
+                              </tr>
+
+
+                              <tr>
+
+                                  <td colspan="4"><li>สถานที่เกิดเหตุ</td>
+
+                              </tr>
+                              <tr>
+                                  <td colspan="1">&nbsp;&nbsp;&nbsp;บ้านเลขที่ : <label ng-bind="caseFile.houseno_case"></label></td>
+                                  <td colspan="1">หมู่ที่ : <label ng-bind="caseFile.villageno_case"></label></td>
+                                  <td colspan="1">ซอย/ตรอก : <label ng-bind="caseFile.road_case"></label></td>
+                                  <td colspan="1">ถนน : <label ng-bind="caseFile.lane_alley_case"></label></td>
+
+                              </tr>
+                              <tr>
+                                  <td colspan="1">&nbsp;&nbsp;&nbsp;ตำบล : <label ng-bind="caseFile.subdistrict_case"></label></td>
+                                  <td colspan="1">อำเภอ : <label ng-bind="caseFile.disreict_case"></label></td>
+                                  <td colspan="2">จังหวัด : <label ng-bind="caseFile.province_case"></label></td>
+
+                              </tr>
+                              <tr>
+
+                                  <td colspan="4"><li>พนักงานสอบสวนเจ้าของคดี : <label ng-bind="caseFile.rank_police+' '+caseFile.name_police+' '+caseFile.surname_police+' โทร :'+caseFile.tel_police"></label></td>
+
+                              </tr>
+                              <tr>
+
+                                  <td colspan="4"><li>รายชื่อบุคคลที่กระทำความผิด</td>
+
+                              </tr>
+
+                              <tr ng-repeat="person in caseFile.criminalhistory">
+
+                                  <td colspan="4" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a ng-bind="'<% $index+1 %>. '+person.nametitle+' '+person.name+' '+person.surname" ng-click="view_person(person)"></a></td>
+
+                              </tr>
+
+                          </ol>
+
+
+
+                      </table>
+
+
+
+
+                  </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,229 @@
+
+
+
+<table align="center" border="0" width="100%">
+    <ol>
+        <tr>
+            <td colspan="4" align="center"><h3>แบบประวัติบุคคลที่เกี่ยวข้องกับอาชญากรรม</h3></td>
+
+        </tr>
+
+        <tr>
+
+            <td colspan="3">ประเภทบุคคล : <label ng-bind="person.typepeople"></label></td>
+            <td rowspan="5" align="center" style="font-family : sans-serif, Arial;">
+
+                <img ng-if="!person.photo" src="/img/square-image.png" width="156" height="156">
+
+                <img ng-if="person.photo" ng-src="<% person.photo %>" width="156" height="156">
+
+
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="3"><li>ชื่อ-ชื่อสกุล : <label ng-bind="''+person.name+''+person.surname"></label></td>
+
+        </tr>
+        <tr>
+
+            <td colspan="3"><li>อายุ :
+
+
+        </tr>
+        <tr>
+
+            <td colspan="3">&nbsp;&nbsp;&nbsp; นามเเฝง : <label ng-bind="person.alias"></label></td>
+
+        </tr>
+
+
+
+        <tr>
+
+            <td colspan="3">&nbsp;&nbsp;&nbsp;หมายเลขประจำตัวประชาชน : <label ng-bind="person.idcard"></label></td>
+
+        </tr>
+
+        <tr>
+            <td colspan="4"><li>ที่อยู่ปัจจุบัน : <label ng-bind="person.addresspresent.present_address"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="4">&nbsp;&nbsp;&nbsp;โทร : <label ng-bind="person.addresspresent.present_tel"></label></td>
+
+        </tr>
+
+
+        <tr>
+
+            <td colspan="4">&nbsp;&nbsp;&nbsp;ภูมิลำเนาเดิม : <label ng-bind="person.addressoriginal.original_address"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="4">&nbsp;&nbsp;&nbsp;โทร : <label ng-bind="person.addressoriginal.original_tel"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="4"><li>อาชีพ : <label ng-bind="person.career"></label></td>
+        </tr>
+
+
+            <tr ng-repeat="addressoffice in person.addressoffice">
+                <td colspan="1">&nbsp;&nbsp;&nbsp;สถานที่ทำงานที่ : <label ng-bind="' <% $index+1 %>. '+addressoffice.office"></label></td>
+                <td colspan="2">ที่ตั้ง : <label ng-bind="addressoffice.office_address"></label></td>
+                <td colspan="1">เบอร์โทร : <label ng-bind="addressoffice.office_tel"></label></td>
+            </tr>
+
+
+
+        <tr>
+
+            <td colspan="4"><li>การศึกษา : <label ng-bind="person.education"></label></td>
+        </tr>
+        <tr>
+            <td colspan="2"><li>ชื่อบิดา-สกุล : <label ng-bind="person.datafather.father_name +' '+ person.datafather.father_surname"></label></td>
+            <td colspan="1">อายุ : <label ng-bind="person.datafather.father_age"></label></td>
+            <td colspan="1">มีชีวิต/เสียชีวิต : <label ng-bind="person.datafather.father_live_died"></label></td>
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp;&nbsp;&nbsp;ที่อยู่ : <label ng-bind="person.datafather.father_address"></label></td>
+            <td colspan="1">โทร : <label ng-bind="person.datafather.father_tel"></label></td>
+        </tr>
+
+        <tr>
+            <td colspan="1">&nbsp;&nbsp;&nbsp;อาชีพ : <label ng-bind="person.datafather.father_career"></label></td>
+            <td colspan="2">ที่ทำงาน : <label ng-bind="person.datafather.father_nameoffice"></label></td>
+            <td colspan="1">โทร : <label ng-bind="person.datafather.father_nameoffice_tel"></label></td>
+
+        </tr>
+
+        <tr>
+            <td colspan="2"><li>ชื่อมารดา :  <label ng-bind="person.datamother.mother_name+' '+person.datamother.mother_surname"></label></td>
+            <td colspan="1">อายุ : <label ng-bind="person.datamother.mother_age"></label></td>
+            <td colspan="1">มีชีวิต/เสียชีวิต : <label ng-bind="person.datamother.mother_live_died"></label></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp;&nbsp;&nbsp;ที่อยู่ : <label ng-bind="person.datamother.mother_address"></label></td>
+            <td colspan="1">โทร : <label ng-bind="person.datamother.mother_tel"></label></td>
+        </tr>
+        <tr>
+            <td colspan="1">&nbsp;&nbsp;&nbsp;อาชีพ : <label ng-bind="person.datamother.mother_career"></label></td>
+            <td colspan="2">ทำงาน : <label ng-bind="person.datamother.mother_nameoffice"></label></td>
+            <td colspan="1">โทร :  <label ng-bind="person.datamother.mother_nameoffice_tel"></label></td>
+
+        </tr>
+
+        <tr>
+            <td colspan="2"><li>ชื่อสามี/ภรรยา : <label ng-bind="person.dataspouse.spouse_name+' '+person.dataspouse.spouse_surname"></label></td>
+            <td colspan="1">อายุ : <label ng-bind="person.dataspouse.spouse_age"></label></td>
+            <td colspan="1">มีชีวิต/เสียชีวิต : <label ng-bind="person.dataspouse.spouse_live_died"></label></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp;&nbsp;&nbsp;ที่อยู่ : <label ng-bind="person.dataspouse.spouse_address"></label></td>
+            <td colspan="1">โทร : <label ng-bind="person.dataspouse.spouse_tel"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="1">&nbsp;&nbsp;&nbsp;อาชีพ : <label ng-bind="person.dataspouse.spouse_career"></label></td>
+            <td colspan="2">ที่ทำงาน : <label ng-bind="person.dataspouse.spouse_nameoffice"></label></td>
+            <td colspan="1">โทร : <label ng-bind="person.dataspouse.spouse_tel"></label></td>
+
+        </tr>
+
+
+        <tr ng-repeat="datachild in person.datachild">
+            <td colspan="4"><li>บุตรคนที่ : <label ng-bind="' <% $index+1 %>. '+datachild.child_name+' '+datachild.child_surname
+            +'  อายุ '+ datachild.child_age+' ( '+datachild.child_live_died+' ) ที่อยู่ ' + datachild.child_address
+            +' โทร '+ datachild.child_tel + '  อาชีพ ' + datachild.child_career"></label></td>
+
+
+        </tr>
+
+
+        <tr>
+            <td colspan="2"><li>ตำหนิรูปพรรณ</td>
+            <td colspan="2">- ส่วนสูงประมาณ : <label ng-bind="person.height"></label></td>
+
+        </tr>
+        <tr>
+
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- น้ำหนัก : <label ng-bind="person.weight"></label></td>
+            <td colspan="2">- ผิว : <label ng-bind="person.skin"></label></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- รูปร่าง : <label ng-bind="person.shape"></label></td>
+            <td colspan="2">- ฟัน : <label ng-bind="person.teeth"></label></td>
+
+        </tr>
+
+        <tr>
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- คิ้ว : <label ng-bind="person.eyebrow"></label></td>
+            <td colspan="2">- ทรงผม : <label ng-bind="person.hairstyles"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- ศีรษะ : <label ng-bind="person.head"></label></td>
+            <td colspan="2">- ใบหน้า : <label ng-bind="person.face"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- ตา : <label ng-bind="person.eye"></label></td>
+            <td colspan="2">- หู : <label ng-bind="person.ear"></label></td>
+        </tr>
+        <tr>
+
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- จมูก : <label ng-bind="person.nose"></label></td>
+            <td colspan="2">- ปาก : <label ng-bind="person.mouth"></label></td>
+        </tr>
+        <tr>
+
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- คาง : <label ng-bind="person.chin"></label></td>
+            <td colspan="2">- หนวด-เครา : <label ng-bind="person.mirror"></label></td>
+        </tr>
+        <tr>
+
+            <td colspan="2">&nbsp;&nbsp;&nbsp;- ตำหนิพิการที่ติดตัวมาเเตกำเนิด : <label ng-bind="person.scar"></label></td>
+            <td colspan="2">- สำเนียง : <label ng-bind="person.accent"></label></td>
+        </tr>
+        <tr>
+
+            <td colspan="4">&nbsp;&nbsp;&nbsp;- ลักษณะเด่นที่สังเกตเห็นได้ง่าย : <label ng-bind="person.nature"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="4"><li>อุปนิสัย : <label ng-bind="person.personality"></label></td>
+
+        </tr>
+        <tr>
+            <td colspan="4"><li>สถานที่ชอบไปเที่ยวเตร่ : <label ng-bind="person.location_gallivent"></label></td>
+
+        </tr>
+        <tr >
+            <td colspan="4"><li>ประวัติการกระทำความผิด :   </td>
+
+        </tr>
+        <tr >
+            <td colspan="4" ><label >
+
+                <ul ng-repeat="datacase in person.datacase">
+                    <li ng-if="datacase.name_case" ng-bind="'ชื่อคดี ' +datacase.name_case + ' '"></li>
+                    <li ng-if="datacase.number_case" ng-bind=" 'เลขคดี '+datacase.number_case + ' ปี '+ datacase.year_number_case
+                    +' สถานนีตำรวจ '+ datacase.station_number_case"></li>
+                </ul>
+
+            </label></td>
+
+        </tr>
+
+
+
+
+    </ol>
+</table>
